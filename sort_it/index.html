@@ -8,16 +8,22 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
-    <div id="app">
-        <div>
-            <button v-on:click="getHouse()">Get house</button>
+    <div id="app" class="row w-100 h-100 justify-content-center">
+        <div class="row w-100 justify-content-center mt-5">
+            <img src="sorting-hat.png" alt="Hat" />
+            </div ">
+        <div class="row w-100 justify-content-center mt-5 ">
+            <button v-on:click="getHouse() ">Get house</button>
         </div>
-        <div id="result">Your house is: {{house}}</div>
+        <div class="row w-100 justify-content-center mt-5 " id="result ">
+            Your house is:</br>{{house}}
+        </div>
     </div>
-    <script src="sort_it.js"></script>
+    <script src="sort_it.js "></script>
 </body>
 
 </html>
