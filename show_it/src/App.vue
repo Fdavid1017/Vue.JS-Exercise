@@ -7,17 +7,21 @@
             </option>
         </select>
         <span>Selected: {{ selected }}</span>
-        <div>Json:<br>{{JSON.stringify(this.result)}}</div>
+        <br><br>
+        <GalaxyCanvas v-bind:data=this.result />
     </div>
 </template>
 
 <script>
     import json from './data/constellations.json';
+    import GalaxyCanvas from "@/components/GalaxyCanvas";
     import axios from 'axios';
 
     export default {
         name: 'app',
-        components: {},
+        components: {
+            GalaxyCanvas
+        },
         data() {
             return {
                 myJson: json,
