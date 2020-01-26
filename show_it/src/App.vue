@@ -6,7 +6,6 @@
                 {{galaxy.name}}
             </option>
         </select>
-        <span>Selected: {{ selected }}</span>
         <br><br>
         <GalaxyCanvas v-bind:data=this.result />
     </div>
