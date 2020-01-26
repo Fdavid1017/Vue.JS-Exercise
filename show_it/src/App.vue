@@ -25,12 +25,17 @@
         data() {
             return {
                 myJson: json,
-                selected: 'And',
+                selected: 'none',
                 result: 'üres'
             }
         },
         methods: {
             GetJsonData: function () {
+                if(this.selected==="none")
+                {
+                    return;
+                }
+
                 let url = 'https://www.astropical.space/api.php?table=stars&which=constellation&limit=' + this.selected + '&format=json';
                 axios.get(url).then(response => (this.result = response.data));
             }
