@@ -1,13 +1,20 @@
 <template>
-    <div id="app">
-        <label for="list">Galaxy: </label>
-        <select id="list" v-model="selected" @change="GetJsonData()">
-            <option v-for="galaxy in myJson" v-bind:key="galaxy.abbreviation" v-bind:value="galaxy.abbreviation">
-                {{galaxy.name}}
-            </option>
-        </select>
-        <br><br>
-        <GalaxyCanvas v-bind:data=this.result />
+    <div id="app" class="row h-100 justify-content-center mt-5">
+        <div id="leftSide" class="col h-100 justify-content-center w-50">
+            <div id="select" class="row  justify-content-center">
+                <label for="list" class="mr-4">Galaxy: </label>
+                <select id="list" v-model="selected" @change="GetJsonData()">
+                    <option v-for="galaxy in myJson" v-bind:key="galaxy.abbreviation"
+                            v-bind:value="galaxy.abbreviation">
+                        {{galaxy.name}}
+                    </option>
+                </select>
+            </div>
+            <GalaxyCanvas class="row  justify-content-center" id="glCanvas" v-bind:data='this.result'/>
+        </div>
+        <div id="rightSide" class="col h-100 justify-content-center w-50">
+
+        </div>
     </div>
 </template>
 
@@ -30,8 +37,7 @@
         },
         methods: {
             GetJsonData: function () {
-                if(this.selected==="none")
-                {
+                if (this.selected === "none") {
                     return;
                 }
 
@@ -43,12 +49,7 @@
 </script>
 
 <style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+    #glCanvas {
+        margin-top: 30px;
     }
 </style>
