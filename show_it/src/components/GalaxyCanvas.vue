@@ -1,11 +1,35 @@
 <template>
     <div>
-        <canvas id='dataCanvas' ref="dataCanvas" v-bind:width="this.canvasWidth" v-bind:height="this.canvasHeight"></canvas>
+        <canvas id='dataCanvas' ref="dataCanvas" v-bind:width="this.canvasWidth"
+                v-bind:height="this.canvasHeight"></canvas>
     </div>
 </template>
 
 <script>
     /* eslint-disable no-console */
+
+    import {EventBus} from "./EventBus";
+
+    EventBus.$on('StarHighlighted', location => {
+        let c = document.getElementById("dataCanvas");
+        let canvas = c.getContext("2d");
+        canvas.beginPath();
+        canvas.arc((c.width / 2) + location.X, (c.height / 2) + location.Y, location.mag, 0, 2 * Math.PI);
+        canvas.strokeStyle = '#DC141C';
+        canvas.lineWidth = 2;
+        canvas.stroke();
+    });
+
+    EventBus.$on('StarHighlightedEnd', location => {
+        let c = document.getElementById("dataCanvas");
+        let canvas = c.getContext("2d");
+        canvas.beginPath();
+        canvas.arc((c.width / 2) + location.X, (c.height / 2) + location.Y, location.mag, 0, 2 * Math.PI);
+        canvas.strokeStyle = '#FCCC04';
+        canvas.lineWidth = 2;
+        canvas.stroke();
+    });
+
     export default {
         props: [
             'data'
@@ -50,8 +74,8 @@
                     this.vueCanvas.moveTo(this.xOrigin, this.yOrigin);
                     this.vueCanvas.lineTo(x2, y2);
                     this.vueCanvas.closePath();
-                    this.vueCanvas.strokeStyle='#5e5e5e';
-                    this.vueCanvas.lineWidth=1;
+                    this.vueCanvas.strokeStyle = '#5e5e5e';
+                    this.vueCanvas.lineWidth = 1;
                     this.vueCanvas.stroke();
                 }
 
@@ -82,8 +106,8 @@
                     //Drawing stars
                     this.vueCanvas.beginPath();
                     this.vueCanvas.arc(this.xOrigin + x, this.yOrigin + y, current.mag, 0, 2 * Math.PI);
-                    this.vueCanvas.strokeStyle='#FCCC04';
-                    this.vueCanvas.lineWidth=2;
+                    this.vueCanvas.strokeStyle = '#FCCC04';
+                    this.vueCanvas.lineWidth = 2;
                     this.vueCanvas.stroke();
                 }
             }
