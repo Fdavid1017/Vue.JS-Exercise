@@ -12,8 +12,8 @@
             </div>
             <GalaxyCanvas class="row  justify-content-center" id="glCanvas" v-bind:data='this.result'/>
         </div>
-        <div id="rightSide" class="col h-75 w-75 mr-5 mb-5">
-            <div id="menuBar" class="row d-inline-flex row w-100 justify-content-start">
+        <div id="rightSide" class="col h-75 w-50 mr-5 mb-5">
+            <div id="menuBar" class="row d-inline-flex w-100 justify-content-start">
                 <button class="menuItem p-2" v-on:click="showGalaxyInfos" :class='{activeMenuItem:isGalaxy}'>
                     Galaxy Infos
                 </button>
