@@ -1,6 +1,6 @@
 <template>
     <div>
-        <canvas id='dataCanvas' v-bind:width="this.canvasWidth" v-bind:height="this.canvasHeight"></canvas>
+        <canvas id='dataCanvas' ref="dataCanvas" v-bind:width="this.canvasWidth" v-bind:height="this.canvasHeight"></canvas>
     </div>
 </template>
 

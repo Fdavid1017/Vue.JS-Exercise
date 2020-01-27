@@ -12,7 +12,7 @@
             </div>
             <GalaxyCanvas class="row  justify-content-center" id="glCanvas" v-bind:data='this.result'/>
         </div>
-        <div id="rightSide" class="col h-75 w-50 mr-5 mb-5">
+        <div id="rightSide" class="col h-75 w-75 mr-5 mb-5">
             <div id="menuBar" class="row d-inline-flex row w-100 justify-content-start">
                 <button class="menuItem p-2" v-on:click="showGalaxyInfos" :class='{activeMenuItem:isGalaxy}'>
                     Galaxy Infos
@@ -22,8 +22,9 @@
                     Star Infos
                 </button>
             </div>
-            <div id="rightContent" class="row h-100 w-100" :is="contentComponent" v-bind:galaxy='this.currentGalaxy'>
-                empty
+            <div id="rightContent" class="row h-100 w-100" :is="contentComponent"
+                 v-bind:data='this.isGalaxy?this.currentGalaxy:this.result'>
+                Select a galaxy
             </div>
         </div>
     </div>
@@ -33,10 +34,10 @@
     /* eslint-disable no-console,no-unused-vars */
 
     import json from './data/constellations.json';
-    import GalaxyCanvas from "@/components/GalaxyCanvas";
+    import GalaxyCanvas from "./components/GalaxyCanvas";
     import axios from 'axios';
-    import GalaxyInfos from "@/components/GalaxyInfos";
-    import StarInfos from "@/components/StarInfos";
+    import GalaxyInfos from "./components/GalaxyInfos";
+    import StarInfosPanel from "./components/StarInfosPanel";
 
     function GetCurrentGalaxy() {
         this.currentGalaxy = null;
@@ -52,7 +53,7 @@
         components: {
             GalaxyCanvas,
             GalaxyInfos,
-            StarInfos
+            StarInfosPanel
         },
         data() {
             return {
@@ -77,19 +78,15 @@
             },
 
             showGalaxyInfos: function () {
-                console.log('GALAXY');
                 this.isGalaxy = true;
                 this.isStar = false;
-
                 GetCurrentGalaxy.call(this);
-
                 this.contentComponent = 'GalaxyInfos';
             },
             showStarInfos: function () {
-                console.log('Star');
                 this.isGalaxy = false;
                 this.isStar = true;
-                this.contentComponent = 'StarInfos';
+                this.contentComponent = 'StarInfosPanel';
             }
         }
     };
