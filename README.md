@@ -17,4 +17,5 @@ npm run serve
 ```
 
 3. Go to your browser and open the url showed  after starting the server
+
 e.g.: ```http://localhost:8080/```
