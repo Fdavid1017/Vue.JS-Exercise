@@ -13,31 +13,56 @@
             <GalaxyCanvas class="row  justify-content-center" id="glCanvas" v-bind:data='this.result'/>
         </div>
         <div id="rightSide" class="col h-75 w-50 mr-5 mb-5">
-            <div id="menuBar" class="d-inline-flex row w-100 justify-content-start">
-                <button class="mt-2 ml-3" v-on:click="showGalaxyInfos">Galaxy Infos</button>
-                <button class="mt-2 ml-5" v-on:click="showStarInfos">Star Infos</button>
+            <div id="menuBar" class="row d-inline-flex row w-100 justify-content-start">
+                <button class="menuItem p-2" v-on:click="showGalaxyInfos" :class='{activeMenuItem:isGalaxy}'>
+                    Galaxy Infos
+                </button>
+                <button class="menuItem p-2 ml-1" id="right" v-on:click="showStarInfos"
+                        :class='{activeMenuItem:isStar}'>
+                    Star Infos
+                </button>
+            </div>
+            <div id="rightContent" class="row h-100 w-100" :is="contentComponent" v-bind:galaxy='this.currentGalaxy'>
+                empty
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    /* eslint-disable no-console */
+    /* eslint-disable no-console,no-unused-vars */
 
     import json from './data/constellations.json';
     import GalaxyCanvas from "@/components/GalaxyCanvas";
     import axios from 'axios';
+    import GalaxyInfos from "@/components/GalaxyInfos";
+    import StarInfos from "@/components/StarInfos";
+
+    function GetCurrentGalaxy() {
+        this.currentGalaxy = null;
+        for (let i = 0; i < this.myJson.valueOf().length && this.currentGalaxy === null; i++) {
+            if (this.myJson[i].abbreviation.toString() === this.selected) {
+                this.currentGalaxy = this.myJson[i];
+            }
+        }
+    }
 
     export default {
         name: 'app',
         components: {
-            GalaxyCanvas
+            GalaxyCanvas,
+            GalaxyInfos,
+            StarInfos
         },
         data() {
             return {
                 myJson: json,
                 selected: 'none',
-                result: 'üres'
+                result: 'üres',
+                contentComponent: 'GalaxyInfos',
+                isGalaxy: true,
+                isStar: false,
+                currentGalaxy: null
             }
         },
         methods: {
@@ -48,13 +73,23 @@
 
                 let url = 'https://www.astropical.space/api.php?table=stars&which=constellation&limit=' + this.selected + '&format=json';
                 axios.get(url).then(response => (this.result = response.data));
+                GetCurrentGalaxy.call(this);
             },
 
             showGalaxyInfos: function () {
                 console.log('GALAXY');
+                this.isGalaxy = true;
+                this.isStar = false;
+
+                GetCurrentGalaxy.call(this);
+
+                this.contentComponent = 'GalaxyInfos';
             },
             showStarInfos: function () {
                 console.log('Star');
+                this.isGalaxy = false;
+                this.isStar = true;
+                this.contentComponent = 'StarInfos';
             }
         }
     };
@@ -73,18 +108,37 @@
         -webkit-backdrop-filter: blur(15px);
     }
 
-    #rightSide {
-        border: #171717 1px solid;
-        background-color: rgba(16, 16, 16, 0.76);
+    #rightContent {
+        color: #f5f5f5 !important;
+        border: #171717 0 solid;
+        background-color: rgba(16, 16, 16, 0.65);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
     }
 
-    button{
-        color: #121212;
-        border: #f5f5f5 1px solid;
-        background-color: rgba(255, 255, 255, 0.41);
+    button {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.0);
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    .menuItem {
+        color: rgba(16, 16, 16, 0.0);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #f2f2f2;
+        border: 0 solid #121212;
+        border-radius: 10px 10px 0px 0px;
+        background-color: rgba(16, 16, 16, 0.35);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
+    }
+
+    .activeMenuItem {
+        background-color: rgba(16, 16, 16, 0.65);
+        color: #ffbb4d !important;
+        -webkit-text-stroke-width: 0px;
     }
 </style>

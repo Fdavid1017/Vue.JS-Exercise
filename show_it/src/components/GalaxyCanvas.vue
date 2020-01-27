@@ -23,9 +23,6 @@
         mounted() {
             let c = document.getElementById("dataCanvas");
             this.vueCanvas = c.getContext("2d");
-            /*ctx.beginPath();
-            ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-            ctx.stroke();*/
         },
 
         computed: {
@@ -48,7 +45,7 @@
                 for (let k = 0; k < 30; k++) {
                     let x2 = this.xOrigin + Math.cos(Math.PI * (k * 15) / 180) * lineLength;
                     let y2 = this.yOrigin + Math.sin(Math.PI * (k * 15) / 180) * lineLength;
-                    console.log('X: ' + x2 + ' Y: ' + y2);
+
                     this.vueCanvas.beginPath();
                     this.vueCanvas.moveTo(this.xOrigin, this.yOrigin);
                     this.vueCanvas.lineTo(x2, y2);
