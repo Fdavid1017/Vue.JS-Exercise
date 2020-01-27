@@ -9,25 +9,24 @@
     /* eslint-disable no-console */
 
     import {EventBus} from "./EventBus";
+    import ConvertCoordinates from "../functions/ConvertCoordinates";
 
-    EventBus.$on('StarHighlighted', location => {
+    function DrawCircle(location, color) {
         let c = document.getElementById("dataCanvas");
         let canvas = c.getContext("2d");
         canvas.beginPath();
         canvas.arc((c.width / 2) + location.X, (c.height / 2) + location.Y, location.mag, 0, 2 * Math.PI);
-        canvas.strokeStyle = '#DC141C';
+        canvas.strokeStyle = color;
         canvas.lineWidth = 2;
         canvas.stroke();
+    }
+
+    EventBus.$on('StarHighlighted', location => {
+        DrawCircle(location, '#DC141C');
     });
 
     EventBus.$on('StarHighlightedEnd', location => {
-        let c = document.getElementById("dataCanvas");
-        let canvas = c.getContext("2d");
-        canvas.beginPath();
-        canvas.arc((c.width / 2) + location.X, (c.height / 2) + location.Y, location.mag, 0, 2 * Math.PI);
-        canvas.strokeStyle = '#FCCC04';
-        canvas.lineWidth = 2;
-        canvas.stroke();
+        DrawCircle(location, '#FCCC04');
     });
 
     export default {
@@ -83,29 +82,11 @@
                     let current = this.data.hipstars[i];
 
                     //converting celestial coordinates to cartesian coordinates
-                    let hours, minutes, seconds, temp;
-                    hours = parseInt(current.ra);
-                    temp = (current.ra - hours) * 60;
-                    minutes = parseInt(temp);
-                    temp -= minutes;
-                    temp *= 60;
-                    seconds = parseInt(temp);
-
-                    let a = (hours * 15) + (minutes * 0.25) + (seconds * 0.004166);
-                    let b = current.de; //current.de
-                    let c = current.dist;//current.dist
-                    let x, y;
-                    /*
-                    X = (C * cos(B)) * cos(A)
-                    Y = (C * cos(B)) * sin(A)
-                    Z = C * sin(B)
-                    */
-                    x = (c * Math.cos(b)) * Math.cos(a);
-                    y = (c * Math.cos(b)) * Math.sin(a);
+                    let coordinates = ConvertCoordinates.CelestialToCartesianConverter(current);
 
                     //Drawing stars
                     this.vueCanvas.beginPath();
-                    this.vueCanvas.arc(this.xOrigin + x, this.yOrigin + y, current.mag, 0, 2 * Math.PI);
+                    this.vueCanvas.arc(this.xOrigin + coordinates.X, this.yOrigin + coordinates.Y, current.mag, 0, 2 * Math.PI);
                     this.vueCanvas.strokeStyle = '#FCCC04';
                     this.vueCanvas.lineWidth = 2;
                     this.vueCanvas.stroke();

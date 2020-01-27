@@ -45,7 +45,6 @@
 
 <script>
     /* eslint-disable no-console */
-
     import PlayAudioButton from "./PlayAudioButton";
 
     export default {
