@@ -38,6 +38,7 @@
     import axios from 'axios';
     import GalaxyInfos from "./components/GalaxyInfos";
     import StarInfosPanel from "./components/StarInfosPanel";
+    import PlayAudioButton from "./components/PlayAudioButton";
 
     function GetCurrentGalaxy() {
         this.currentGalaxy = null;
@@ -51,6 +52,7 @@
     export default {
         name: 'app',
         components: {
+            PlayAudioButton,
             GalaxyCanvas,
             GalaxyInfos,
             StarInfosPanel

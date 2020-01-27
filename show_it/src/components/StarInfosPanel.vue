@@ -5,6 +5,7 @@
                 <li v-for="star in this.data.hipstars" v-bind:key="star.id" v-on:mouseover="ItemHover(star.id-1)"
                     v-on:mouseleave="ItemHoverEnd(star.id-1)">
                     {{star.name===''?'Unnamed':star.name}}
+                    <PlayAudioButton v-bind:text="star.name===''?'Unnamed':star.name"/>
                 </li>
             </ol>
         </div>
@@ -18,9 +19,10 @@
     /* eslint-disable no-console */
     import StarInfosData from "./StarInfosData";
     import {EventBus} from "./EventBus";
+    import PlayAudioButton from "./PlayAudioButton";
 
     export default {
-        components: {StarInfosData},
+        components: {PlayAudioButton, StarInfosData},
         props: [
             'data'
         ],
