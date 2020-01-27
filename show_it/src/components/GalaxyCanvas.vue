@@ -98,7 +98,7 @@
     #dataCanvas {
         height: 500px;
         width: 500px;
-        border: #dedede 1px solid;
+        border: #f5f5f5 1px solid;
         background-color: rgba(255, 255, 255, 0.41);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
