@@ -7,6 +7,20 @@
 <script>
     /* eslint-disable no-console */
 
+    // eslint-disable-next-line no-unused-vars
+    function getCoordinates(ra, x) {
+        let hour, min, sec, temp;
+        hour = parseInt(ra);
+        temp = (ra - hour) * 60;
+        min = parseInt(temp);
+        temp -= min;
+        temp *= 60;
+        sec = parseInt(temp);
+        x = hour + ':' + min + ':' + sec;
+        // console.log(hour + ':' + min + ':' + sec);
+         console.log(x);
+    }
+
     export default {
         props: [
             'data'
@@ -41,8 +55,10 @@
 
         watch: {
             data: function () {
+                //clear the canvas
                 this.vueCanvas.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
+                //resizing the canvas
                 /*let highestRA = this.data.hipstars[0].ra + this.data.hipstars[0].radius;
                 let highestDE = this.data.hipstars[0].de + this.data.hipstars[0].radius;
                 for (let i = 1; i < this.data.hipstars.length; i++) {
@@ -61,7 +77,8 @@
 
                 console.log('Width: ' + this.canvasWidth + ' Height: ' + this.canvasHeight);*/
 
-                for (let i = 0; i < this.data.hipstars.length; i++) {
+                //drawing the stars to the canvas
+                /*for (let i = 0; i < this.data.hipstars.length; i++) {
                     let current = this.data.hipstars[i];
                     this.vueCanvas.beginPath();
                     this.vueCanvas.arc(current.ra,current.de, current.mag, 0, 2 * Math.PI);
@@ -72,9 +89,26 @@
                     } else {
                         console.log('X: ' + (this.xOrigin + current.ra) + '   Y: ' + (this.yOrigin + current.de) + '   Radius: ' + current.mag)
                     }
-                }
+                }*/
+
+                //this.getCoordinates(1.734760,0,0,0)
+                let x = "asd";
+                getCoordinates(1.734760, x);
+                console.log(x);
             }
-        }
+        },
+        /* // eslint-disable-next-line no-unused-vars
+         getCoordinates: function (ra, de, x, y) {
+             let hour, min, sec, temp;
+             hour = parseInt(ra);
+             temp = (ra - hour) * 60;
+             min = parseInt(temp);
+             temp -= min;
+             temp *= 60;
+             sec = parseInt(temp);
+
+             console.log(hour + ':' + min + ':' + sec);
+         }*/
     }
 </script>
 
