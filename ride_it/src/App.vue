@@ -1,16 +1,18 @@
 <template>
   <div id="app" class="h-100 w-100">
-    <div id="nav" class="row w-100">
+    <div id="nav" class="row w-100 align-items-center">
       <div class="col logo">
         <div class="row d-flex justify-content-start ml-5">
           <router-link to="/">
-            <img src="@/assets/carLogoWhite.svg" alt="logo"
+            <img src="@/assets/carLogoBlack.svg" alt="logo"
           /></router-link>
         </div>
       </div>
-      <div class="col">
+      <div class="col ">
         <div class="row d-flex justify-content-end mr-5">
-          <div class="col-1 mr-4"><router-link to="/Login">Login</router-link></div>
+          <div class="col-1 mr-4">
+            <router-link to="/Login">Login</router-link>
+          </div>
           <div class="col-1">
             <router-link to="/Register">Register</router-link>
           </div>
@@ -27,8 +29,10 @@
 -->
 
 <style lang="scss">
+@import '@/scss/variables.scss';
+
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -38,14 +42,11 @@
 #nav {
   a {
     height: 50px;
-    font-weight: bold;
-    color: #0080ff;
+    color: $textColor;
     overflow: hidden;
-
-    position: fixed;
-
     &.router-link-exact-active {
       color: #42b983;
+      font-weight: bold;
     }
   }
 }
