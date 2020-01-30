@@ -6,8 +6,10 @@
           <div id="lrPanel" class="w-65 h-75">
             <div class="row h-100 align-items-center">
               <div id="text" class="row w-100 justify-content-center">
-                <span>Log in </span>or<span> Register </span>and instantly get
-                acces to thousands of ride or to add new advertisements
+                <span><router-link to="/Login">Log in </router-link></span
+                >or<span><router-link to="/Register"> Register </router-link></span
+                >and instantly get acces to thousands of ride or to add new
+                advertisements
               </div>
             </div>
           </div>
@@ -48,7 +50,11 @@
 
 span {
   white-space: pre;
-  color: $highlightColor;
+  color: $highlightColor !important;
   cursor: auto;
+}
+
+a {
+  color: $highlightColor !important;
 }
 </style>

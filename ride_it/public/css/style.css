@@ -15,3 +15,8 @@ body {
 .m-auto {
   margin-left: auto;
   margin-right: auto; }
+
+.myButton {
+  background: #f9f055 !important;
+  border-radius: 40px !important;
+  padding: 10px !important; }

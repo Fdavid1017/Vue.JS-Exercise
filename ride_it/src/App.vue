@@ -4,8 +4,8 @@
       <div class="col logo">
         <div class="row d-flex justify-content-start ml-5">
           <router-link to="/">
-            <img src="@/assets/carLogoBlack.svg" alt="logo"
-          /></router-link>
+            <img class="mr-2" src="@/assets/carLogoBlack.svg" alt="logo"
+          />Ride It</router-link>
         </div>
       </div>
       <div class="col ">
@@ -14,7 +14,7 @@
             <router-link to="/Login">Login</router-link>
           </div>
           <div class="col-1">
-            <router-link to="/Register">Register</router-link>
+            <router-link to="/Register"><span class="myButton">Register</span></router-link>
           </div>
         </div>
       </div>
@@ -45,7 +45,6 @@
     color: $textColor;
     overflow: hidden;
     &.router-link-exact-active {
-      color: #42b983;
       font-weight: bold;
     }
   }
