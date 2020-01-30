@@ -1,13 +1,21 @@
 <template>
-  <div id="app">
-    <div id="nav" class="d-inline-block">
-      <div class="logo">
-        <router-link to="/">
-          <img src="@/assets/carLogoWhite.svg" alt="logo"
-        /></router-link>
+  <div id="app" class="h-100 w-100">
+    <div id="nav" class="row w-100">
+      <div class="col logo">
+        <div class="row d-flex justify-content-start ml-5">
+          <router-link to="/">
+            <img src="@/assets/carLogoWhite.svg" alt="logo"
+          /></router-link>
+        </div>
       </div>
-      <div><router-link to="/Login">Login</router-link></div>
-      <div><router-link to="/Register">Register</router-link></div>
+      <div class="col">
+        <div class="row d-flex justify-content-end mr-5">
+          <div class="col-1 mr-4"><router-link to="/Login">Login</router-link></div>
+          <div class="col-1">
+            <router-link to="/Register">Register</router-link>
+          </div>
+        </div>
+      </div>
     </div>
     <router-view />
   </div>
@@ -28,11 +36,13 @@
 }
 
 #nav {
-  padding: 30px;
-
   a {
+    height: 50px;
     font-weight: bold;
     color: #0080ff;
+    overflow: hidden;
+
+    position: fixed;
 
     &.router-link-exact-active {
       color: #42b983;
