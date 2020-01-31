@@ -4,22 +4,56 @@
       <div class="col">
         <ProfilePictureUpload />
         <div class="row mt-3">
-          <MyInput class="mr-5" type="text" name="First Name" />
-          <MyInput type="text" name="Second Name" />
+          <MyInput
+            class="mr-5"
+            type="text"
+            name="First Name"
+            v-bind:hasError="errors.includes('firstNameError')"
+            v-model="account.firstName"
+          />
+          <MyInput
+            type="text"
+            name="Second Name"
+            v-bind:hasError="errors.includes('secondNameError')"
+            v-model="account.secondName"
+          />
         </div>
         <div class="row mt-3">
-          <MyInput class="mr-5" type="password" name="Password" />
-          <MyInput type="password" name="Password Again" />
+          <MyInput
+            class="mr-5"
+            type="password"
+            name="Password"
+            v-bind:hasError="
+              errors.includes('passwordError') ||
+                errors.includes('passwordsNotMachingError')
+            "
+            v-model="account.password"
+          />
+          <MyInput
+            type="password"
+            name="Password Again"
+            v-bind:hasError="
+              errors.includes('passwordAgainError') ||
+                errors.includes('passwordsNotMachingError')
+            "
+            v-model="account.passwordAgain"
+          />
         </div>
         <div class="row mt-3">
-          <MyInput class="mr-5" type="email" name="Email" />
+          <MyInput
+            class="mr-5"
+            type="email"
+            name="Email"
+            v-bind:hasError="errors.includes('emailError')"
+            v-model="account.email"
+          />
           <div id="terms" class="col">
             By signing up, you confirm that you've read and accepted our Terms
             of Service and Privacy Policy.
           </div>
         </div>
         <div class="row mt-3 justify-content-center">
-          <a class="myButton">
+          <a v-on:click="register()" class="myButton">
             Register
           </a>
         </div>
@@ -35,11 +69,34 @@
 </template>
 
 <script>
+/* eslint-disable space-before-function-paren */
+
 import MyInput from '../components/MyInput.vue'
 import ProfilePictureUpload from '../components/Register/ProfilePictureUpload.vue'
+import { register } from '@/functions/Register.js'
+
 export default {
   name: 'Register',
-  components: { ProfilePictureUpload, MyInput }
+  data: function() {
+    return {
+      account: {
+        firstName: '',
+        secondName: '',
+        password: '',
+        passwordAgain: '',
+        email: '',
+        profilePicture: ''
+      },
+      errors: []
+    }
+  },
+  components: { ProfilePictureUpload, MyInput },
+  methods: {
+    register: function() {
+      this.errors = register(this.$store, this.account)
+      console.log(this.errors)
+    }
+  }
 }
 </script>
 

@@ -4,15 +4,30 @@
       {{ name }}
     </div>
     <div class="row w-100">
-      <input v-bind:type="type" v-bind:name="name" />
+      <input
+        v-bind:class="hasError ? 'error' : ''"
+        ref="ip"
+        v-bind:type="type"
+        v-bind:name="name"
+        :value="variable"
+        @input="updateVariable()"
+      />
     </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable space-before-function-paren */
+
 export default {
-  props: ['type', 'name'],
-  name: 'MyInput'
+  props: ['type', 'name', 'hasError', 'variable'],
+  name: 'MyInput',
+
+  methods: {
+    updateVariable() {
+      this.$emit('input', this.$refs.ip.value)
+    }
+  }
 }
 </script>
 
@@ -25,7 +40,11 @@ input {
   border-bottom: 1px $textColor solid;
 }
 
-.name{
-font-weight: bold;
+.name {
+  font-weight: bold;
+}
+
+.error {
+  border: 2px red solid !important;
 }
 </style>
