@@ -7,22 +7,31 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     account: {
-      firstName: 'firstName',
-      secondName: 'secondName',
-      password: 'password',
-      email: 'email',
-      profilePicture: 'profilePic'
+      firstName: '',
+      secondName: '',
+      password: '',
+      email: '',
+      profilePicture: ''
+    },
+
+    loggedInUser: {
+      email: '',
+      password: ''
     }
   },
   mutations: {
     setAccount(state, user) {
       console.log(user)
       state.account = user
+    },
+    setCurrentUser(state, user) {
+      console.log(user)
+      state.account = user
     }
   },
   actions: {
-    setAccount(context) {
-      context.commit('setAccount')
+    setCurrentUser(context) {
+      context.commit('setCurrentUser')
     }
   },
   modules: {}

@@ -8,6 +8,9 @@
         <div class="row mt-3 justify-content-center">
           <img id="logo" src="@/assets/carLogoBlack.svg" alt="Logo" />
         </div>
+        <div v-if="errors.includes('noAccountError')" class="row mt-3">
+          Account not found with this email and password coombination!
+        </div>
         <div class="row mt-3">
           <MyInput
             type="email"
@@ -25,7 +28,7 @@
           />
         </div>
         <div class="row mt-3 justify-content-center">
-          <a v-on:click="register()" class="myButton">
+          <a v-on:click="login()" class="myButton">
             Login
           </a>
         </div>
@@ -43,7 +46,9 @@
 <script>
 /* eslint-disable space-before-function-paren */
 
+import { login } from '@/functions/Login.js'
 import MyInput from '../components/MyInput.vue'
+
 export default {
   components: {
     MyInput
@@ -59,8 +64,8 @@ export default {
     }
   },
   methods: {
-    register: function() {
-      // this.errors = register(this.$store, this.account)
+    login: function() {
+      this.errors = login(this.$store, this.user)
       console.log(this.errors)
     }
   }
