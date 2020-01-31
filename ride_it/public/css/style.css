@@ -20,3 +20,8 @@ body {
   background: #f9f055 !important;
   border-radius: 40px !important;
   padding: 10px !important; }
+
+.panel {
+  background-color: #ffffff;
+  border-radius: 45px;
+  padding: 15px; }

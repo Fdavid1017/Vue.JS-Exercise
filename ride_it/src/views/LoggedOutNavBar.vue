@@ -1,13 +1,6 @@
 <template>
   <div id="nav" class="row w-100 align-items-center">
-    <div class="col logo">
-      <div class="row d-flex justify-content-start ml-5">
-        <router-link to="/">
-          <img class="mr-2" src="@/assets/carLogoBlack.svg" alt="logo" />Ride
-          It</router-link
-        >
-      </div>
-    </div>
+    <Logo />
     <div class="col ">
       <div class="row d-flex justify-content-end mr-5">
         <div class="col-1 mr-4">
@@ -23,9 +16,21 @@
   </div>
 </template>
 
+<script>
+import Logo from '../components/NavBar/Logo.vue'
+export default {
+  components: {
+    Logo
+  }
+}
+</script>
+
 <style lang="scss">
 @import '@/scss/variables.scss';
 #nav {
+  margin: 0;
+  padding: 0;
+
   a {
     height: 50px;
     color: $textColor;
