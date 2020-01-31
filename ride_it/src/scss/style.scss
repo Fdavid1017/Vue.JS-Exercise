@@ -6,7 +6,8 @@ html {
   width: 100%;
 }
 
-body, html {
+body,
+html {
   color: $textColor !important;
   font-family: 'Montserrat', sans-serif !important;
 }
@@ -24,14 +25,25 @@ body, html {
 }
 
 .myButton {
-  background: #f9f055 !important;
+  outline-offset: -6px;
+  background: $highlightColor !important;
   border-radius: 40px !important;
   padding: 10px !important;
+  cursor: pointer !important;
+}
+
+.myButton:hover {
+  outline-offset: -6px;
+  background: white !important;
+  border: 2px $highlightColor solid;
+  border-radius: 40px !important;
+  padding: 10px !important;
+  cursor: pointer !important;
 }
 
 .panel {
   border: none;
-  background-color: #ffffff;
+  background-color: white;
   border-radius: 45px;
-  padding: 30px;  
+  padding: 30px;
 }

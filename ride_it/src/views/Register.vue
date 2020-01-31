@@ -19,16 +19,14 @@
           </div>
         </div>
         <div class="row mt-3 justify-content-center">
-          <div class="myButton">
+          <a class="myButton">
             Register
-          </div>
+          </a>
         </div>
         <div class="row mt-3 justify-content-center registered">
           Already have an account?
         </div>
-        <router-link
-          class="row justify-content-center registered"
-          to="/Login"
+        <router-link class="row justify-content-center registered" to="/Login"
           >Sign in</router-link
         >
       </div>
@@ -78,5 +76,9 @@ export default {
     text-decoration: underline !important;
     color: $lightTextColor !important;
   }
+}
+
+.myButton {
+  font-weight: bold;
 }
 </style>
