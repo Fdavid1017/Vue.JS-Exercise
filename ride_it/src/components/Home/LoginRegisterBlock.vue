@@ -6,9 +6,9 @@
           <div id="lrPanel" class="w-65 h-75">
             <div class="row h-100 align-items-center">
               <div id="text" class="row w-100 justify-content-center">
-                <span><router-link to="/Login">Log in </router-link></span
-                >or<span><router-link to="/Register"> Register </router-link></span
-                >and instantly get acces to thousands of ride or to add new
+                <span><router-link to="/Login">Log in</router-link></span> or
+                <span><router-link to="/Register">Register</router-link></span>
+                and instantly get acces to thousands of ride or to add new
                 advertisements
               </div>
             </div>
@@ -38,6 +38,7 @@
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   font-size: 1.4em;
   margin: 35px;
+  white-space: pre;
 }
 
 #block {
@@ -49,7 +50,6 @@
 }
 
 span {
-  white-space: pre;
   color: $highlightColor !important;
   cursor: auto;
 }
