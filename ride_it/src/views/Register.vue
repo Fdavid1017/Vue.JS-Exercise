@@ -1,59 +1,47 @@
 <template>
-  <div id="registerBlock" class="m-0 p-0 h-100 w-100 justify-content-center">
-    <div class="row w-50 justify-content-center">
-      <div class="panel m-0 row justify-content-center">
+  <div id="registerBlock" class="w-100 justify-content-center">
+    <div id="formContainer" class="panel row m-5">
+      <div class="col">
         <ProfilePictureUpload />
-        <div class="row w-100"></div>
-        <div class="row mt-2">
-          <div class="col">
-            <MyInput type="text" name="First name" />
-          </div>
-          <div class="col">
-            <MyInput type="text" name="Second name" />
-          </div>
+        <div class="row mt-3">
+          <MyInput class="mr-5" type="text" name="First Name" />
+          <MyInput type="text" name="Second Name" />
         </div>
-        <div class="row w-100"></div>
-        <div class="row mt-2">
-          <div class="col">
-            <MyInput type="password" name="Password" />
-          </div>
-          <div class="col">
-            <MyInput type="password" name="Password again" />
-          </div>
+        <div class="row mt-3">
+          <MyInput class="mr-5" type="password" name="Password" />
+          <MyInput type="password" name="Password Again" />
         </div>
-        <div class="row w-100"></div>
-        <div class="row mt-2">
-          <div class="col">
-            <MyInput type="email" name="E-mail" />
-          </div>
-          <div class="col" id="termsText">
+        <div class="row mt-3">
+          <MyInput class="mr-5" type="email" name="Email" />
+          <div id="terms" class="col">
             By signing up, you confirm that you've read and accepted our Terms
             of Service and Privacy Policy.
           </div>
         </div>
-        <div class="row w-100"></div>
-        <div class="row mt-2">
-          <button class="myButton">Register</button>
+        <div class="row mt-3 justify-content-center">
+          <div class="myButton">
+            Register
+          </div>
         </div>
-        <div class="row w-100"></div>
-        <div class="row mt-2">
+        <div class="row mt-3 justify-content-center registered">
           Already have an account?
-          <span><router-link to="/Login">Sign in</router-link></span>
         </div>
+        <router-link
+          class="row justify-content-center registered"
+          to="/Login"
+          >Sign in</router-link
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import MyInput from '@/components/MyInput.vue'
-import ProfilePictureUpload from '@/components/Register/ProfilePictureUpload.vue'
+import MyInput from '../components/MyInput.vue'
+import ProfilePictureUpload from '../components/Register/ProfilePictureUpload.vue'
 export default {
   name: 'Register',
-  components: {
-    MyInput,
-    ProfilePictureUpload
-  }
+  components: { ProfilePictureUpload, MyInput }
 }
 </script>
 
@@ -65,20 +53,29 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  display: flex;
+  align-items: center;
 }
 
-#termsText {
-  font-size: 17px;
-  line-height: 20px;
+#terms {
+  width: 350px;
+  color: $lightTextColor;
+  font-size: 15px;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+.registered {
+  color: $lightTextColor;
+  font-size: 15px;
+  line-height: 21px;
   align-items: center;
   text-align: center;
 
-  color: $lightTextColor;
-}
-
-span {
-  text-decoration: underline;
   a {
+    text-decoration: underline !important;
     color: $lightTextColor !important;
   }
 }

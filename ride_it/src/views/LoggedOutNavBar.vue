@@ -7,9 +7,9 @@
           <router-link to="/Login">Login</router-link>
         </div>
         <div class="col-1">
-          <router-link to="/Register"
-            ><span class="myButton">Register</span></router-link
-          >
+          <router-link to="/Register">
+            <span class="myButton">Register</span>
+          </router-link>
         </div>
       </div>
     </div>
