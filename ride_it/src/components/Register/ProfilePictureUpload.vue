@@ -1,5 +1,5 @@
 <template>
-  <div id="profilePicture" class="row w-100 p-0 m-0 justify-content-center">
+  <div id="profilePicture" class="row p-0 m-0 justify-content-center">
     <label
       for="profilePic"
       class="row w-100 justify-content-center align-items-center"
@@ -34,5 +34,10 @@
   overflow: hidden;
   position: absolute;
   z-index: -1;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
 }
 </style>

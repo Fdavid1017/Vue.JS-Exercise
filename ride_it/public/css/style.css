@@ -3,7 +3,7 @@ html {
   height: 100%;
   width: 100%; }
 
-body {
+body, html {
   color: #1b1b1b !important;
   font-family: 'Montserrat', sans-serif !important; }
 
@@ -22,6 +22,7 @@ body {
   padding: 10px !important; }
 
 .panel {
+  border: none;
   background-color: #ffffff;
   border-radius: 45px;
   padding: 15px; }

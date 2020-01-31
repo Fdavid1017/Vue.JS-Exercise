@@ -6,7 +6,7 @@ html {
   width: 100%;
 }
 
-body {
+body, html {
   color: $textColor !important;
   font-family: 'Montserrat', sans-serif !important;
 }
@@ -30,7 +30,8 @@ body {
 }
 
 .panel {
+  border: none;
   background-color: #ffffff;
   border-radius: 45px;
-  padding: 15px;
+  padding: 15px;  
 }
