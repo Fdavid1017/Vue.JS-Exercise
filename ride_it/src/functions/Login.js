@@ -31,6 +31,6 @@ export function login(store, account) {
     password: account.password
   }
 
-  store.commit('setAccount', user)
+  store.commit('setCurrentUser', user)
   return []
 }

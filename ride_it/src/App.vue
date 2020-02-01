@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="h-100 w-100">
-    <LoggedOutNavBar />
+    <NavBar />
     <router-view />
   </div>
 </template>
@@ -11,12 +11,12 @@
 -->
 
 <script>
-import LoggedOutNavBar from '@/views/LoggedOutNavBar.vue'
+import NavBar from '@/views/NavBar.vue'
 
 export default {
   name: 'app',
   components: {
-    LoggedOutNavBar
+    NavBar
   }
 }
 </script>
