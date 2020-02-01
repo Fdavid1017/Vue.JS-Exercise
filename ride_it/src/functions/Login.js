@@ -16,8 +16,8 @@ export function login(store, account) {
   }
 
   if (
-    account.email !== store.account.email ||
-    account.password !== store.password
+    account.email !== store.state.account.email ||
+    account.password !== store.state.account.password
   ) {
     errors.push('noAccountError')
   }
@@ -32,5 +32,5 @@ export function login(store, account) {
   }
 
   store.commit('setAccount', user)
-  return null
+  return []
 }

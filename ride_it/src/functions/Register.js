@@ -40,5 +40,5 @@ export function register(store, account) {
   }
 
   store.commit('setAccount', user)
-  return null
+  return []
 }

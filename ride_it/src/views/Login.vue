@@ -8,23 +8,27 @@
         <div class="row mt-3 justify-content-center">
           <img id="logo" src="@/assets/carLogoBlack.svg" alt="Logo" />
         </div>
-        <div v-if="errors.includes('noAccountError')" class="row mt-3">
+        <div
+          v-if="errors.includes('noAccountError')"
+          id="noAccountText"
+          Fclass="row mt-3 justify-content-center"
+        >
           Account not found with this email and password coombination!
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 justify-content-center">
           <MyInput
             type="email"
             name="Email"
             v-bind:hasError="errors.includes('emailError')"
-            v-model="user.firstName"
+            v-model="user.email"
           />
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 justify-content-center">
           <MyInput
             type="password"
             name="Password"
             v-bind:hasError="errors.includes('passwordError')"
-            v-model="user.firstName"
+            v-model="user.password"
           />
         </div>
         <div class="row mt-3 justify-content-center">
@@ -57,8 +61,8 @@ export default {
   data: function() {
     return {
       user: {
-        password: '',
-        email: ''
+        email: '',
+        password: ''
       },
       errors: []
     }
@@ -67,6 +71,10 @@ export default {
     login: function() {
       this.errors = login(this.$store, this.user)
       console.log(this.errors)
+
+      if (this.errors.length === 0) {
+        this.$router.push('/')
+      }
     }
   }
 }
@@ -74,6 +82,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
+
+#noAccountText {
+  color: $errorColor;
+}
 
 .myButton {
   font-weight: bold;

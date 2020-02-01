@@ -45,6 +45,6 @@ input {
 }
 
 .error {
-  border: 2px red solid !important;
+  border: 2px $errorColor solid !important;
 }
 </style>

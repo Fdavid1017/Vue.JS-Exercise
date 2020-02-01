@@ -95,6 +95,10 @@ export default {
     register: function() {
       this.errors = register(this.$store, this.account)
       console.log(this.errors)
+
+      if (this.errors.length === 0) {
+        this.$router.push('Login')
+      }
     }
   }
 }
