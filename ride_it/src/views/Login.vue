@@ -70,7 +70,6 @@ export default {
   methods: {
     login: function() {
       this.errors = login(this.$store, this.user)
-      console.log(this.errors)
 
       if (this.errors.length === 0) {
         this.$router.push('/')

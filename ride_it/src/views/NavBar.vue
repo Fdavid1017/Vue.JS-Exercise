@@ -12,19 +12,19 @@
         <div class="col-1 logo dropdown">
           <img src="@/assets/profileIconBlack.svg" alt="Profile" />
           <div class="dropdownItems ">
-            <router-link v-if="$store.loggedIn" class="p-2" to="/Profile"
+            <router-link v-if="this.$store.getters.loggedIn" class="p-2" to="/Profile"
               >Profile</router-link
             >
-            <router-link v-if="$store.loggedIn" class="p-2" to="/UserRides"
+            <router-link v-if="this.$store.getters.loggedIn" class="p-2" to="/UserRides"
               >My Rides</router-link
             >
-            <router-link v-if="$store.loggedIn" class="p-2" to="/LogOut"
+            <router-link v-if="this.$store.getters.loggedIn" class="p-2" to="/LogOut"
               >Log Out</router-link
             >
-            <router-link v-if="!$store.loggedIn" class="p-2" to="/Login"
+            <router-link v-if="!this.$store.getters.loggedIn" class="p-2" to="/Login"
               >Login</router-link
             >
-            <router-link v-if="!$store.loggedIn" class="p-2" to="/Register"
+            <router-link v-if="!this.$store.getters.loggedIn" class="p-2" to="/Register"
               >Register</router-link
             >
           </div>

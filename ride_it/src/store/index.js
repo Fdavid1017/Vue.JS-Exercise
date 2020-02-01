@@ -24,14 +24,15 @@ export default new Vuex.Store({
   mutations: {
     setAccount(state, user) {
       console.log('Set account:')
-      console.log(user)
       state.account = user
+      console.log(state.account)
     },
     setCurrentUser(state, user) {
       console.log('Set current user:')
-      console.log(user)
       state.loggedInUser = user
       state.loggedIn = true
+      console.log(state.loggedInUser)
+      console.log(state.loggedIn)
     }
   },
   actions: {
@@ -42,5 +43,10 @@ export default new Vuex.Store({
       context.commit('setCurrentUser')
     }
   },
-  modules: {}
+  modules: {},
+  getters: {
+    loggedIn: state => {
+      return state.loggedIn
+    }
+  }
 })
