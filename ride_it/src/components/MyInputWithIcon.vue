@@ -1,9 +1,7 @@
 <template>
   <div class="inputWIcon">
     <div class="row">
-      <img class="mr-1" :src="iconSrc" alt="icon" />{{
-        name
-      }}
+      <img class="mr-1" :src="iconSrc" alt="icon" />{{ name }}
     </div>
     <div class="row">
       <input
