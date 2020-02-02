@@ -19,7 +19,9 @@ export default new Vuex.Store({
       password: ''
     },
 
-    loggedIn: false
+    loggedIn: false,
+
+    advertisedRides: []
   },
   mutations: {
     setAccount(state, user) {
@@ -33,6 +35,21 @@ export default new Vuex.Store({
       state.loggedIn = true
       console.log(state.loggedInUser)
       console.log(state.loggedIn)
+    },
+
+    addRide(state, infos) {
+      console.log('Add ride:')
+      let ride = {
+        from: infos.from,
+        to: infos.to,
+        when: infos.when,
+        spaces: infos.spaces,
+        car: infos.car,
+        description: infos.description,
+        driverName: state.account.firstName + ' ' + state.account.secondName
+      }
+      state.advertisedRides.push(ride)
+      console.log(ride)
     }
   },
   actions: {
@@ -41,6 +58,9 @@ export default new Vuex.Store({
     },
     setCurrentUser(context) {
       context.commit('setCurrentUser')
+    },
+    addRide(context) {
+      context.commit('addRide')
     }
   },
   modules: {},

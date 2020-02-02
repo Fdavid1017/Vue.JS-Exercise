@@ -12,6 +12,7 @@
                 type="text"
                 v-bind:iconSrc="require('../assets/mapPlace.svg')"
                 name="From"
+                v-model="ride.from"
               />
             </div>
             <div class="col">
@@ -20,6 +21,7 @@
                 type="text"
                 v-bind:iconSrc="require('../assets/destination.svg')"
                 name="To"
+                v-model="ride.to"
               />
             </div>
           </div>
@@ -30,6 +32,7 @@
                 type="datetime-local"
                 v-bind:iconSrc="require('../assets/calendar.svg')"
                 name="When"
+                v-model="ride.when"
               />
             </div>
             <div class="col">
@@ -38,6 +41,7 @@
                 type="number"
                 v-bind:iconSrc="require('../assets/team.svg')"
                 name="Empty Spaces"
+                v-model="ride.spaces"
               />
             </div>
           </div>
@@ -48,6 +52,7 @@
                 type="text"
                 v-bind:iconSrc="require('../assets/car1.svg')"
                 name="Car type"
+                v-model="ride.car"
               />
             </div>
             <div class="col">
@@ -56,11 +61,14 @@
                 type="text"
                 v-bind:iconSrc="require('../assets/files.svg')"
                 name="Description"
+                v-model="ride.description"
               />
             </div>
           </div>
           <div class="row w-100 mt-3">
-            <div class="col-5 my-auto"><router-link to="/">Cancel</router-link></div>
+            <div class="col-5 my-auto">
+              <router-link to="/">Cancel</router-link>
+            </div>
             <div class="col-5 my-auto myButton">Add</div>
           </div>
         </div>
@@ -75,15 +83,27 @@ import MyInputWithIcon from '../components/MyInputWithIcon.vue'
 
 export default {
   name: 'Register',
-  components: { MyInputWithIcon }
+  components: { MyInputWithIcon },
+  data: function() {
+    return {
+      ride: {
+        from: '',
+        to: '',
+        when: '',
+        spaces: '',
+        car: '',
+        description: ''
+      }
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
 
-a{
-  color:$lightTextColor;
+a {
+  color: $lightTextColor;
 }
 
 #title {
