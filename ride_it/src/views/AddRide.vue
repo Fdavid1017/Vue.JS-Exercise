@@ -9,7 +9,7 @@
             <div class="col">
               <MyInputWithIcon
                 class="mt-3"
-                iconSrc="../assets/mapPlace.svg"
+                v-bind:iconSrc="require('../assets/mapPlace.svg')"
                 name="From"
               />
             </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="inputWIcon">
     <div class="row">
-      <img class="mr-1" v-bind:src="iconSrc" alt="icon" />{{
+      <img class="mr-1" :src="iconSrc" alt="icon" />{{
         name
       }}
     </div>
