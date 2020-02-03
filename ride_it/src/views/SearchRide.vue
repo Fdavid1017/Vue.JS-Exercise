@@ -3,7 +3,7 @@
     <div class="col panel justify-content-center mx-5 p-5">
       <div class="row">
         <div class="row w-100 justify-content-center title">
-          Search for a ride
+          Search for a searchParams
         </div>
         <div class="row w-100 justify-content-center">
           <div class="col justify-content-center">
@@ -13,7 +13,7 @@
               v-bind:iconSrc="require('../assets/mapPlace.svg')"
               name="From"
               v-bind:hasError="errors.includes('fromError')"
-              v-model="ride.from"
+              v-model="searchParams.from"
             />
           </div>
           <div class="col">
@@ -23,7 +23,7 @@
               v-bind:iconSrc="require('../assets/destination.svg')"
               name="To"
               v-bind:hasError="errors.includes('toError')"
-              v-model="ride.to"
+              v-model="searchParams.to"
             />
           </div>
         </div>
@@ -34,7 +34,7 @@
               v-bind:iconSrc="require('../assets/calendar.svg')"
               name="Between"
               v-bind:hasError="errors.includes('whenError')"
-              v-model="ride.betweenFrom"
+              v-model="searchParams.betweenFrom"
             />
           </div>
           <div class="col">
@@ -43,7 +43,7 @@
               v-bind:iconSrc="require('../assets/calendar.svg')"
               name="And"
               v-bind:hasError="errors.includes('whenError')"
-              v-model="ride.betweenTill"
+              v-model="searchParams.betweenTill"
             />
           </div>
         </div>
@@ -53,20 +53,20 @@
               class="mt-3"
               name="Joins Later"
               v-bind:iconSrc="require('../assets/chain.svg')"
-              v-model="ride.joinsLater"
+              v-model="searchParams.joinsLater"
             />
           </div>
-          <div class="col" v-if="ride.joinsLater">
+          <div class="col" v-if="searchParams.joinsLater">
             <MyInputWithIcon
               class="mt-3"
               type="text"
               v-bind:iconSrc="require('../assets/mapPlace.svg')"
               name="Where"
               v-bind:hasError="errors.includes('whereError')"
-              v-model="ride.where"
+              v-model="searchParams.where"
             />
           </div>
-          <div class="col" v-if="!ride.joinsLater"></div>
+          <div class="col" v-if="!searchParams.joinsLater"></div>
         </div>
         <div
           id="loginError"
@@ -81,13 +81,20 @@
           <div class="col-5 my-auto">
             <router-link to="/">Cancel</router-link>
           </div>
-          <div class="col-5 my-auto myButton" v-on:click="console.log('Add')">
-            Add
+          <div class="col-5 my-auto myButton" v-on:click="search()">
+            Search
           </div>
         </div>
       </div>
     </div>
-    <div class="col">Result</div>
+    <div class="col justify-content-center mx-5 p-5">
+      <RideInfos
+      class="mt-3"
+        v-for="ride in result"
+        v-bind:key="ride.from"
+        v-bind:ride="ride"
+      />
+    </div>
   </div>
 </template>
 
@@ -97,17 +104,20 @@
 import DateTimePicker from '@/components/DateTimePicker.vue'
 import MyInputWithIcon from '@/components/MyInputWithIcon.vue'
 import MyCheckBox from '@/components/MyCheckBox.vue'
+import RideInfos from '@/components/SearchRide/RideInfos.vue'
+import { searchRide } from '@/functions/SearchRide.js'
 
 export default {
   name: 'Register',
   components: {
     MyInputWithIcon,
     DateTimePicker,
-    MyCheckBox
+    MyCheckBox,
+    RideInfos
   },
   data: function() {
     return {
-      ride: {
+      searchParams: {
         from: '',
         to: '',
         betweenFrom:
@@ -131,7 +141,14 @@ export default {
         joinsLater: false,
         where: ''
       },
-      errors: []
+      errors: [],
+      result: []
+    }
+  },
+  methods: {
+    search: function() {
+      this.result = searchRide(this.$store, this.searchParams)
+      console.log(this.result)
     }
   }
 }
@@ -158,6 +175,7 @@ a {
   display: flex;
   align-items: center;
 }
+
 .myButton {
   font-weight: bold;
 }

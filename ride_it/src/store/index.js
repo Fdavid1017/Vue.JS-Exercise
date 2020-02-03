@@ -60,6 +60,12 @@ export default new Vuex.Store({
   getters: {
     isloggedIn: state => {
       return state.loggedIn
+    },
+    account: state => {
+      return state.account
+    },
+    rides: state => {
+      return state.advertisedRides
     }
   }
 })

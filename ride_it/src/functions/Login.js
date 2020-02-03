@@ -16,8 +16,8 @@ export function login(store, account) {
   }
 
   if (
-    account.email !== store.state.account.email ||
-    account.password !== store.state.account.password
+    account.email !== store.getters.account.email ||
+    account.password !== store.getters.account.password
   ) {
     errors.push('noAccountError')
   }
