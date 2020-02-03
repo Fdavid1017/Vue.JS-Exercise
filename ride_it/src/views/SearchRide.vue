@@ -68,15 +68,6 @@
           </div>
           <div class="col" v-if="!searchParams.joinsLater"></div>
         </div>
-        <div
-          id="loginError"
-          class="row w-100 mt-3 justify-content-center"
-          v-if="errors.includes('notLoggedInError')"
-        >
-          <div class="col  my-auto">
-            <router-link to="/Login">Log in</router-link> to add new rides!
-          </div>
-        </div>
         <div class="row w-100 mt-3">
           <div class="col-5 my-auto">
             <router-link to="/">Cancel</router-link>
@@ -87,9 +78,9 @@
         </div>
       </div>
     </div>
-    <div class="col justify-content-center mx-5 p-5">
+    <div id="results" class="col h-100 justify-content-center mx-5 p-5">
       <RideInfos
-      class="mt-3"
+        class="mt-3"
         v-for="ride in result"
         v-bind:key="ride.from"
         v-bind:ride="ride"
@@ -156,6 +147,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
+
+#results {
+  overflow-y: auto;
+}
 
 a {
   color: $lightTextColor;
