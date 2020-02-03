@@ -12,6 +12,7 @@
                 type="text"
                 v-bind:iconSrc="require('../assets/mapPlace.svg')"
                 name="From"
+                v-bind:hasError="errors.includes('fromError')"
                 v-model="ride.from"
               />
             </div>
@@ -21,17 +22,18 @@
                 type="text"
                 v-bind:iconSrc="require('../assets/destination.svg')"
                 name="To"
+                v-bind:hasError="errors.includes('toError')"
                 v-model="ride.to"
               />
             </div>
           </div>
           <div class="row w-100">
             <div class="col">
-              <MyInputWithIcon
+              <DateTimePicker
                 class="mt-3"
-                type="datetime-local"
                 v-bind:iconSrc="require('../assets/calendar.svg')"
                 name="When"
+                v-bind:hasError="errors.includes('whenError')"
                 v-model="ride.when"
               />
             </div>
@@ -41,6 +43,7 @@
                 type="number"
                 v-bind:iconSrc="require('../assets/team.svg')"
                 name="Empty Spaces"
+                v-bind:hasError="errors.includes('spacesError')"
                 v-model="ride.spaces"
               />
             </div>
@@ -61,15 +64,25 @@
                 type="text"
                 v-bind:iconSrc="require('../assets/files.svg')"
                 name="Description"
+                v-bind:hasError="errors.includes('descriptionError')"
                 v-model="ride.description"
               />
+            </div>
+          </div>
+          <div
+            id="loginError"
+            class="row w-100 mt-3 justify-content-center"
+            v-if="errors.includes('notLoggedInError')"
+          >
+            <div class="col  my-auto">
+              <router-link to="/Login">Log in</router-link> to add new rides!
             </div>
           </div>
           <div class="row w-100 mt-3">
             <div class="col-5 my-auto">
               <router-link to="/">Cancel</router-link>
             </div>
-            <div class="col-5 my-auto myButton">Add</div>
+            <div class="col-5 my-auto myButton" v-on:click="add()">Add</div>
           </div>
         </div>
       </div>
@@ -78,21 +91,49 @@
 </template>
 
 <script>
-import MyInputWithIcon from '../components/MyInputWithIcon.vue'
 /* eslint-disable space-before-function-paren */
+import MyInputWithIcon from '../components/MyInputWithIcon.vue'
+import DateTimePicker from '@/components/DateTimePicker.vue'
+import { addRide } from '@/functions/AddRide.js'
 
 export default {
   name: 'Register',
-  components: { MyInputWithIcon },
+  components: {
+    DateTimePicker,
+    MyInputWithIcon
+  },
   data: function() {
     return {
       ride: {
         from: '',
         to: '',
-        when: '',
+        when:
+          new Date()
+            .toJSON()
+            .slice(0, 10)
+            .replace(/-/g, '-') +
+          'T' +
+          new Date().getHours() +
+          ':' +
+          new Date().getMinutes(),
         spaces: '',
         car: '',
         description: ''
+      },
+      errors: [],
+      test: ''
+    }
+  },
+  methods: {
+    add: function() {
+      console.log(
+        'Store: ' + this.$store.loggedIn + '\nGetter: ' + this.$store.isloggedIn
+      )
+
+      this.errors = addRide(this.$store, this.ride)
+
+      if (this.errors.length === 0) {
+        this.$router.push('/')
       }
     }
   }
@@ -101,6 +142,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
+
+#loginError {
+  color: $errorColor !important;
+  white-space: pre;
+
+  a {
+    color: $errorColor !important;
+    font-weight: bold;
+  }
+}
 
 a {
   color: $lightTextColor;

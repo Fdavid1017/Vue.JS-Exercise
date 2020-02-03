@@ -65,7 +65,7 @@ export default new Vuex.Store({
   },
   modules: {},
   getters: {
-    loggedIn: state => {
+    isloggedIn: state => {
       return state.loggedIn
     }
   }
