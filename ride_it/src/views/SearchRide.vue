@@ -82,7 +82,7 @@
       <RideInfos
         class="mt-3"
         v-for="ride in result"
-        v-bind:key="ride.from"
+        v-bind:key="ride.rideId"
         v-bind:ride="ride"
       />
     </div>
@@ -150,6 +150,11 @@ export default {
 
 #results {
   overflow-y: auto;
+  -ms-overflow-style: none;
+}
+
+#result::-webkit-scrollbar {
+  display: none;
 }
 
 a {
