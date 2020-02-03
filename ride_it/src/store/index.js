@@ -12,7 +12,8 @@ export default new Vuex.Store({
     loggedInUser: -1,
 
     ridesId: -1,
-    advertisedRides: []
+    advertisedRides: [],
+    acceptResponse: false
   },
   mutations: {
     register(state, user) {
@@ -45,21 +46,20 @@ export default new Vuex.Store({
       state.advertisedRides.push(ride)
     },
     acceptRide(state, rideId) {
-      for (let i = 0; i < state.advertisedRides.length; i++) {
+      state.acceptResponse = false
+      let found = false
+      for (let i = 0; i < state.advertisedRides.length && !found; i++) {
         if (state.advertisedRides[i].rideId === rideId) {
-          if (state.advertisedRides[i].spaces < 1) {
-            return false
+          if (state.advertisedRides[i].spaces > 0) {
+            state.advertisedRides[i].passengerIds.push(
+              state.accounts[state.loggedInUser]
+            )
+            state.advertisedRides[i].spaces--
+            state.acceptResponse = true
+            found = true
           }
-          state.advertisedRides[i].passengerIds.push(
-            state.accounts[state.loggedInUser]
-          )
-
-          state.advertisedRides[i].spaces--
-
-          return true
         }
       }
-      return false
     },
     logOut(state) {
       state.loggedInUser = -1
@@ -92,6 +92,9 @@ export default new Vuex.Store({
     },
     rides: state => {
       return state.advertisedRides
+    },
+    acceptResponse: state => {
+      return state.acceptResponse
     }
   }
 })

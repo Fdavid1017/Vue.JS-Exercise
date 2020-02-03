@@ -56,8 +56,12 @@ export default {
 
   methods: {
     acceptRide() {
-      let res = acceptRide(this.$store, this.ride)
-      console.log('Ride accepted: ' + res)
+      if (this.$store.getters.loggedInUser !== -1) {
+        let res = acceptRide(this.$store, this.ride)
+        console.log('Ride accepted: ' + res)
+      } else {
+        this.$router.push('/Login')
+      }
     }
   }
 }
