@@ -5,6 +5,7 @@ import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
 import AddRide from '@/views/AddRide.vue'
 import SearchRide from '@/views/SearchRide.vue'
+import LogOut from '@/views/LogOut.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/SearchRide',
     name: 'searchRide',
     component: SearchRide
+  },
+  {
+    path: '/LogOut',
+    name: 'logOut',
+    component: LogOut
   }
 ]
 

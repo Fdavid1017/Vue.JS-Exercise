@@ -59,6 +59,9 @@ export default new Vuex.Store({
         }
       }
       console.log('Accept: ' + found)
+    },
+    logOut(state) {
+      state.loggedInUser = -1
     }
   },
   actions: {
@@ -73,6 +76,9 @@ export default new Vuex.Store({
     },
     acceptRide(context) {
       context.commit('acceptRide')
+    },
+    logOut(context) {
+      context.commit('logOut')
     }
   },
   modules: {},

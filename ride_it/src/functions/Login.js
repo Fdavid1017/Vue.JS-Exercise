@@ -15,11 +15,6 @@ export function login(store, account) {
     return errors
   }
 
-  /*
-let rides = store.getters.rides.filter(ride => {
-        return ride.from === search.from && ride.to === search.to && ride.spaces > 0
-      }) */
-
   let user = store.getters.accounts.filter(acc => {
     return acc.email === account.email && acc.password === account.password
   })
