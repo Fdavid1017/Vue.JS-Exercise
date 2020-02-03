@@ -13,31 +13,31 @@
           <img src="@/assets/profileIconBlack.svg" alt="Profile" />
           <div class="dropdownItems ">
             <router-link
-              v-if="this.$store.getters.loggedIn !== -1"
+              v-if="$store.getters.loggedInUser !== -1"
               class="p-2"
               to="/Profile"
               >Profile</router-link
             >
             <router-link
-              v-if="this.$store.getters.loggedIn !== -1"
+              v-if="$store.getters.loggedInUser !== -1"
               class="p-2"
               to="/UserRides"
               >My Rides</router-link
             >
             <router-link
-              v-if="this.$store.getters.loggedIn !== -1"
+              v-if="$store.getters.loggedInUser !== -1"
               class="p-2"
               to="/LogOut"
               >Log Out</router-link
             >
             <router-link
-              v-if="this.$store.getters.loggedIn === -1"
+              v-if="$store.getters.loggedInUser === -1"
               class="p-2"
               to="/Login"
               >Login</router-link
             >
             <router-link
-              v-if="this.$store.getters.loggedIn === -1"
+              v-if="$store.getters.loggedInUser === -1"
               class="p-2"
               to="/Register"
               >Register</router-link

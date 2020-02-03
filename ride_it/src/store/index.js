@@ -53,7 +53,9 @@ export default new Vuex.Store({
           state.advertisedRides[i].passengerIds.push(
             state.accounts[state.loggedInUser]
           )
-          state.advertisedRides[i].spaces--
+          if (state.advertisedRides[i].spaces > 0) {
+            state.advertisedRides[i].spaces--
+          }
         }
       }
       console.log('Accept: ' + found)
