@@ -45,20 +45,21 @@ export default new Vuex.Store({
       state.advertisedRides.push(ride)
     },
     acceptRide(state, rideId) {
-      console.log()
-      let found = false
-      for (let i = 0; i < state.advertisedRides.length && !found; i++) {
+      for (let i = 0; i < state.advertisedRides.length; i++) {
         if (state.advertisedRides[i].rideId === rideId) {
-          found = true
+          if (state.advertisedRides[i].spaces < 1) {
+            return false
+          }
           state.advertisedRides[i].passengerIds.push(
             state.accounts[state.loggedInUser]
           )
-          if (state.advertisedRides[i].spaces > 0) {
-            state.advertisedRides[i].spaces--
-          }
+
+          state.advertisedRides[i].spaces--
+
+          return true
         }
       }
-      console.log('Accept: ' + found)
+      return false
     },
     logOut(state) {
       state.loggedInUser = -1

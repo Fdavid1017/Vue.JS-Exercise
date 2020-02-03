@@ -1,5 +1,5 @@
 <template>
-  <div id="registerBlock" class="w-100 h-100 justify-content-center">
+  <div id="registerBlock" class="w-100 justify-content-center">
     <div class="col"></div>
     <div class="col">
       <div id="formContainer" class="panel row m-5">

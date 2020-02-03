@@ -56,7 +56,8 @@ export default {
 
   methods: {
     acceptRide() {
-      acceptRide(this.$store, this.ride)
+      let res = acceptRide(this.$store, this.ride)
+      console.log('Ride accepted: ' + res)
     }
   }
 }
