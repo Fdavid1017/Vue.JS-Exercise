@@ -6,30 +6,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    account: {
-      firstName: '1',
-      secondName: '1',
-      password: '1',
-      email: '1',
-      profilePicture: '1'
-    },
+    accountsId: -1,
+    accounts: [],
 
-    loggedInUser: {
-      email: '',
-      password: ''
-    },
-
-    loggedIn: false,
+    loggedInUser: -1,
 
     advertisedRides: []
   },
   mutations: {
-    setAccount(state, user) {
-      state.account = user
+    register(state, user) {
+      state.accountsId++
+      user.id = state.accountsId
+      state.accounts.push(user)
     },
+
     setCurrentUser(state, user) {
-      state.loggedInUser = user
-      state.loggedIn = true
+      state.loggedInUser = user.id
     },
 
     addRide(state, infos) {
@@ -40,14 +32,18 @@ export default new Vuex.Store({
         spaces: infos.spaces,
         car: infos.car,
         description: infos.description,
-        driverName: state.account.firstName + ' ' + state.account.secondName
+        driverName:
+          state.accounts[state.loggedInUser].firstName +
+          ' ' +
+          state.accounts[state.loggedInUser].secondName,
+        driverId: state.loggedInUser
       }
       state.advertisedRides.push(ride)
     }
   },
   actions: {
-    setAccount(context) {
-      context.commit('setAccount')
+    register(context) {
+      context.commit('register')
     },
     setCurrentUser(context) {
       context.commit('setCurrentUser')
@@ -58,11 +54,11 @@ export default new Vuex.Store({
   },
   modules: {},
   getters: {
-    isloggedIn: state => {
-      return state.loggedIn
+    loggedInUser: state => {
+      return state.loggedInUser
     },
-    account: state => {
-      return state.account
+    accounts: state => {
+      return state.accounts
     },
     rides: state => {
       return state.advertisedRides

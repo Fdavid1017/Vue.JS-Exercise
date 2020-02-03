@@ -23,7 +23,7 @@
       </div>
       <div class="row mt-2">
         <img class="icon" src="@/assets/calendar.svg" alt="Icon" />
-        When: {{ ride.when }}
+        When: {{ ride.when.replace('T', ' ') }}
       </div>
       <div class="row mt-2">
         <img class="icon" src="@/assets/team.svg" alt="Icon" />

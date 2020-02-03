@@ -36,9 +36,10 @@ export function register(store, account) {
     secondName: account.secondName,
     password: account.password,
     email: account.email,
-    profilePicture: account.profilePicture
+    profilePicture: account.profilePicture,
+    id: -2
   }
 
-  store.commit('setAccount', user)
+  store.commit('register', user)
   return []
 }

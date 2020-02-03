@@ -3,7 +3,7 @@
     <div class="col panel justify-content-center mx-5 p-5">
       <div class="row">
         <div class="row w-100 justify-content-center title">
-          Search for a searchParams
+          Search for a rides
         </div>
         <div class="row w-100 justify-content-center">
           <div class="col justify-content-center">

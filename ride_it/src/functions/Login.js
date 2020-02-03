@@ -15,10 +15,16 @@ export function login(store, account) {
     return errors
   }
 
-  if (
-    account.email !== store.getters.account.email ||
-    account.password !== store.getters.account.password
-  ) {
+  /*
+let rides = store.getters.rides.filter(ride => {
+        return ride.from === search.from && ride.to === search.to && ride.spaces > 0
+      }) */
+
+  let user = store.getters.accounts.filter(acc => {
+    return acc.email === account.email && acc.password === account.password
+  })
+
+  if (user.length !== 1) {
     errors.push('noAccountError')
   }
 
@@ -26,11 +32,6 @@ export function login(store, account) {
     return errors
   }
 
-  let user = {
-    email: account.email,
-    password: account.password
-  }
-
-  store.commit('setCurrentUser', user)
+  store.commit('setCurrentUser', user[0])
   return []
 }
