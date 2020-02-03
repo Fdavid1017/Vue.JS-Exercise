@@ -2,8 +2,7 @@
 
 export function addRide(store, ride) {
   let errors = []
-  console.log(store.isloggedIn)
-  if (!store.loggedIn) {
+  if (!store.getters.isloggedIn) {
     errors.push('notLoggedInError')
     return errors
   }

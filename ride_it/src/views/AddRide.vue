@@ -120,18 +120,12 @@ export default {
         car: '',
         description: ''
       },
-      errors: [],
-      test: ''
+      errors: []
     }
   },
   methods: {
     add: function() {
-      console.log(
-        'Store: ' + this.$store.loggedIn + '\nGetter: ' + this.$store.isloggedIn
-      )
-
       this.errors = addRide(this.$store, this.ride)
-
       if (this.errors.length === 0) {
         this.$router.push('/')
       }

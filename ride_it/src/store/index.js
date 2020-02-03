@@ -25,20 +25,14 @@ export default new Vuex.Store({
   },
   mutations: {
     setAccount(state, user) {
-      console.log('Set account:')
       state.account = user
-      console.log(state.account)
     },
     setCurrentUser(state, user) {
-      console.log('Set current user:')
       state.loggedInUser = user
       state.loggedIn = true
-      console.log(state.loggedInUser)
-      console.log(state.loggedIn)
     },
 
     addRide(state, infos) {
-      console.log('Add ride:')
       let ride = {
         from: infos.from,
         to: infos.to,
@@ -49,7 +43,6 @@ export default new Vuex.Store({
         driverName: state.account.firstName + ' ' + state.account.secondName
       }
       state.advertisedRides.push(ride)
-      console.log(ride)
     }
   },
   actions: {
