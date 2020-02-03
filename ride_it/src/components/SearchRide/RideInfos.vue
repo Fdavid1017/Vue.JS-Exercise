@@ -38,7 +38,7 @@
         Description: {{ ride.description }}
       </div>
       <div class="row mt-2 justify-content-center">
-        <div class="myButton">
+        <div v-on:click="acceptRide()" class="myButton">
           Accept
         </div>
       </div>
@@ -48,13 +48,16 @@
 
 <script>
 /* eslint-disable space-before-function-paren */
+import { acceptRide } from '@/functions/AcceptRide.js'
 
 export default {
   props: ['ride'],
   name: 'RideInfos',
 
   methods: {
-    updateVariable() {}
+    acceptRide() {
+      acceptRide(this.$store, this.ride)
+    }
   }
 }
 </script>

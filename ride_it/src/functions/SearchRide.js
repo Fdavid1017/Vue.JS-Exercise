@@ -8,7 +8,8 @@ export function searchRide(store, search) {
       ride.to === search.to &&
       ride.spaces > 0 &&
       date > new Date(search.betweenFrom) &&
-      date < new Date(search.betweenTill)
+      date < new Date(search.betweenTill) &&
+      !ride.passengerIds.includes(store.getters.loggedInUser)
     )
   })
   return rides

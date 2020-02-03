@@ -11,6 +11,7 @@ export default new Vuex.Store({
 
     loggedInUser: -1,
 
+    ridesId: -1,
     advertisedRides: []
   },
   mutations: {
@@ -25,6 +26,7 @@ export default new Vuex.Store({
     },
 
     addRide(state, infos) {
+      state.ridesId++
       let ride = {
         from: infos.from,
         to: infos.to,
@@ -36,9 +38,25 @@ export default new Vuex.Store({
           state.accounts[state.loggedInUser].firstName +
           ' ' +
           state.accounts[state.loggedInUser].secondName,
-        driverId: state.loggedInUser
+        driverId: state.loggedInUser,
+        rideId: state.rideId,
+        passengerIds: []
       }
       state.advertisedRides.push(ride)
+    },
+    acceptRide(state, rideId) {
+      console.log()
+      let found = false
+      for (let i = 0; i < state.advertisedRides.length && !found; i++) {
+        if (state.advertisedRides[i].rideId === rideId) {
+          found = true
+          state.advertisedRides[i].passengerIds.push(
+            state.accounts[state.loggedInUser]
+          )
+          state.advertisedRides[i].spaces--
+        }
+      }
+      console.log('Accept: ' + found)
     }
   },
   actions: {
@@ -50,6 +68,9 @@ export default new Vuex.Store({
     },
     addRide(context) {
       context.commit('addRide')
+    },
+    acceptRide(context) {
+      context.commit('acceptRide')
     }
   },
   modules: {},
