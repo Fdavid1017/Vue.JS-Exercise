@@ -30,11 +30,9 @@ export default new Vuex.Store({
       user.id = state.accountsId
       state.accounts.push(user)
     },
-
     setCurrentUser(state, user) {
       state.loggedInUser = user.id
     },
-
     addRide(state, infos) {
       state.ridesId++
       let ride = {
@@ -60,18 +58,51 @@ export default new Vuex.Store({
       for (let i = 0; i < state.advertisedRides.length && !found; i++) {
         if (state.advertisedRides[i].rideId === rideId) {
           if (state.advertisedRides[i].spaces > 0) {
-            state.advertisedRides[i].passengerIds.push(
-              state.accounts[state.loggedInUser]
-            )
-            state.advertisedRides[i].spaces--
-            state.acceptResponse = true
-            found = true
+            let contains = false
+            let temp = state.advertisedRides
+            for (let i = 0; i < temp.length; i++) {
+              for (let k = 0; k < temp[i].passengerIds.length; k++) {
+                if (temp[i].passengerIds[k].id === state.loggedInUser) {
+                  contains = true
+                }
+              }
+            }
+            if (!contains) {
+              state.advertisedRides[i].passengerIds.push(
+                state.accounts[state.loggedInUser]
+              )
+              state.advertisedRides[i].spaces--
+              state.acceptResponse = true
+              found = true
+            }
           }
         }
       }
     },
     logOut(state) {
       state.loggedInUser = -1
+    },
+    removeRide(state, rideId) {
+      let found = false
+      for (let i = 0; i < state.advertisedRides.length && !found; i++) {
+        if (state.advertisedRides[i].rideId === rideId) {
+          state.advertisedRides.splice(i, 1)
+          found = true
+        }
+      }
+    },
+    removePassanger(state, rideId) {
+      let found = false
+      let temp = state.advertisedRides
+      for (let i = 0; i < temp.length && !found; i++) {
+        for (let k = 0; k < temp[i].passengerIds.length && !found; k++) {
+          if (temp[i].passengerIds[k].id === state.loggedInUser) {
+            found = false
+            state.advertisedRides[i].passengerIds.splice(k, 1)
+            state.advertisedRides[i].spaces++
+          }
+        }
+      }
     }
   },
   actions: {
@@ -89,6 +120,12 @@ export default new Vuex.Store({
     },
     logOut(context) {
       context.commit('logOut')
+    },
+    removeRide(context) {
+      context.commit('removeRide')
+    },
+    removePassanger(context) {
+      context.commit('removePassanger')
     }
   },
   modules: {},

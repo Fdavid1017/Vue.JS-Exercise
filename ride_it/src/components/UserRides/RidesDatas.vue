@@ -62,36 +62,29 @@
         v-bind:src="require('../../assets/files.svg')"
       />
     </div>
+    <div class="row mt-2">
+      <div class="myButton" v-on:click="removeRide()">Remove</div>
+    </div>
   </div>
 </template>
-
-<!--
- from: infos.from,
- to: infos.to,
- when: infos.when,
- spaces: infos.spaces,
- car: infos.car,
- description: infos.description,
- driverName:
-   state.accounts[state.loggedInUser].firstName +
-   ' ' +
-   state.accounts[state.loggedInUser].secondName,
- driverId: state.loggedInUser,
- rideId: state.rideId,
- passengerIds: []
--->
 
 <script>
 /* eslint-disable space-before-function-paren */
 import DataField from '@/components/UserRides/DataField.vue'
-import { getUserById } from '@/functions/GetUserById.js'
+import { removeRide } from '@/functions/RemoveRide.js'
+import { removePassanger } from '@/functions/RemovePassanger.js'
 
 export default {
   props: ['ride', 'passenger'],
   components: { DataField },
   methods: {
-    getUserById: function(id) {
-      getUserById(this.$store, id)
+    removeRide: function() {
+      if (this.passenger) {
+        removePassanger(this.$store, this.ride.rideId)
+      } else {
+        removeRide(this.$store, this.ride.rideId)
+      }
+      this.$router.push('/')
     }
   }
 }
