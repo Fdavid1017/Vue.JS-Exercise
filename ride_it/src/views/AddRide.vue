@@ -1,8 +1,8 @@
 <template>
-  <div id="registerBlock" class="w-100 justify-content-center">
+  <div id="addBlock" class="w-100 h-100 justify-content-center">
     <div class="col"></div>
-    <div class="col">
-      <div id="formContainer" class="panel row m-5">
+    <div id="cont" class="col my-auto mr-5">
+      <div id="formContainer" class="panel row">
         <div class="col">
           <div class="row justify-content-center" id="title">Add new ride</div>
           <div class="row w-100">
@@ -156,7 +156,7 @@ a {
   font-weight: bold;
 }
 
-#registerBlock {
+#addBlock {
   background-image: url('../assets/drivingBg.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -165,8 +165,8 @@ a {
   display: flex;
   align-items: center;
 
-  height:100%;
-  min-height: 100%;
+  height: 100% !important;
+  min-height: 100% !important;
 }
 .myButton {
   font-weight: bold;

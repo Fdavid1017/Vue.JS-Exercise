@@ -6,17 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    accountsId: 0,
-    accounts: [
-      {
-        firstName: 'first',
-        secondName: 'second',
-        password: '1',
-        email: '1',
-        profilePicture: '',
-        id: 0
-      }
-    ],
+    accountsId: -1,
+    accounts: [],
 
     loggedInUser: -1,
 
