@@ -13,27 +13,27 @@
       </div>
       <div class="row mt-2">
         <div class="col">
-          <img class="icon" src="@/assets/mapPlace.svg" alt="Icon" />
+          <img class="icon mr-1" src="@/assets/mapPlace.svg" alt="Icon" />
           From: {{ ride.from }}
         </div>
-        <div class="col">
+        <div class="col mr-1">
           <img class="icon" src="@/assets/destination.svg" alt="Icon" />
           To: {{ ride.to }}
         </div>
       </div>
-      <div class="row mt-2">
-        <img class="icon" src="@/assets/calendar.svg" alt="Icon" />
+      <div class="row mt-2 mr-1">
+        <img class="icon mr-1" src="@/assets/calendar.svg" alt="Icon" />
         When: {{ ride.when.replace('T', ' ') }}
       </div>
-      <div class="row mt-2">
+      <div class="row mt-2 mr-1">
         <img class="icon" src="@/assets/team.svg" alt="Icon" />
         Free spaces: {{ ride.spaces }}
       </div>
-      <div class="row mt-2">
+      <div class="row mt-2 mr-1">
         <img class="icon" src="@/assets/car1.svg" alt="Icon" />
         Car: {{ ride.car }}
       </div>
-      <div class="row mt-2">
+      <div class="row mt-2 mr-1">
         <img class="icon" src="@/assets/files.svg" alt="Icon" />
         Description: {{ ride.description }}
       </div>

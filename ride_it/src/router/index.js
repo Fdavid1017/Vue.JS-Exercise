@@ -6,6 +6,7 @@ import Register from '@/views/Register.vue'
 import AddRide from '@/views/AddRide.vue'
 import SearchRide from '@/views/SearchRide.vue'
 import LogOut from '@/views/LogOut.vue'
+import Profile from '@/views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -21,9 +22,10 @@ const routes = [
     component: Login
   },
   {
-    path: '/Register',
+    path: '/Register/:edit',
     name: 'register',
-    component: Register
+    component: Register,
+    props: true
   },
   {
     path: '/AddRide',
@@ -39,6 +41,11 @@ const routes = [
     path: '/LogOut',
     name: 'logOut',
     component: LogOut
+  },
+  {
+    path: '/Profile',
+    name: 'profile',
+    component: Profile
   }
 ]
 

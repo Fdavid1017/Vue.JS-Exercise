@@ -22,6 +22,7 @@ html {
 .m-auto {
   margin-left: auto;
   margin-right: auto;
+  font-weight: bold;
 }
 
 .myButton {
@@ -30,6 +31,12 @@ html {
   border-radius: 40px !important;
   padding: 10px !important;
   cursor: pointer !important;
+
+  a {
+    color: $textColor !important;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
 
 .myButton:hover {
@@ -39,6 +46,12 @@ html {
   border-radius: 40px !important;
   padding: 10px !important;
   cursor: pointer !important;
+
+  a {
+    color: $textColor !important;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
 
 .panel {
