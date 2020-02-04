@@ -7,8 +7,8 @@ import AddRide from '@/views/AddRide.vue'
 import SearchRide from '@/views/SearchRide.vue'
 import LogOut from '@/views/LogOut.vue'
 import Profile from '@/views/Profile.vue'
-import ProfileEdit from '@/views/ProfileEdit.vue'
 import UserRides from '@/views/UserRides.vue'
+import Page404 from '@/views/Page404.vue'
 
 Vue.use(VueRouter)
 
@@ -50,14 +50,14 @@ const routes = [
     component: Profile
   },
   {
-    path: '/ProfileEdit',
-    name: 'profileEdit',
-    component: ProfileEdit
-  },
-  {
     path: '/UserRides',
     name: 'userRides',
     component: UserRides
+  },
+  {
+    path: '*',
+    name: 'Page404',
+    component: Page404
   }
 ]
 

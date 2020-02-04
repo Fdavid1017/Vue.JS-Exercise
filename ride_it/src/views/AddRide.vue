@@ -164,6 +164,9 @@ a {
 
   display: flex;
   align-items: center;
+
+  height:100%;
+  min-height: 100%;
 }
 .myButton {
   font-weight: bold;
