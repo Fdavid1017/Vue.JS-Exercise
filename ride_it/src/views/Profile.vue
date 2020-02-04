@@ -17,7 +17,7 @@
         </div>
         <div class="row w-100 justify-content-center mt-2">
           <div class="myButton w-25">
-            <router-link to="/Register/true">Edit</router-link>
+            <router-link to="/ProfileEdit">Edit</router-link>
           </div>
         </div>
       </div>

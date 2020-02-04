@@ -7,6 +7,7 @@ import AddRide from '@/views/AddRide.vue'
 import SearchRide from '@/views/SearchRide.vue'
 import LogOut from '@/views/LogOut.vue'
 import Profile from '@/views/Profile.vue'
+import ProfileEdit from '@/views/ProfileEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,11 @@ const routes = [
     path: '/Profile',
     name: 'profile',
     component: Profile
+  },
+  {
+    path: '/ProfileEdit',
+    name: 'profileEdit',
+    component: ProfileEdit
   }
 ]
 
