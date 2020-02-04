@@ -2,17 +2,17 @@
 
 export function getUserRides(store, passenger) {
   let driverId = store.getters.loggedInUser
-  let rides
+  let rides = []
   console.log(store.getters.rides)
   if (passenger) {
-    rides = store.getters.rides.filter(ride => {
-      for (let user in ride.passengerIds) {
-        console.log(user)
-        if (user.id === driverId) {
-          return ride
+    let temp = store.getters.rides
+    for (let i = 0; i < temp.length; i++) {
+      for (let k = 0; k < temp[i].passengerIds.length; k++) {
+        if (temp[i].passengerIds[k].id === driverId) {
+          rides.push(temp[i])
         }
       }
-    })
+    }
   } else {
     rides = store.getters.rides.filter(ride => {
       return ride.driverId === driverId

@@ -52,7 +52,7 @@
         name="Driver"
         v-bind:src="require('../../assets/profileIconBlack.svg')"
       />
-      {{ ride.driverId }}
+      {{ ride.firstName }}
     </div>
     <div class="row mt-2">
       <DataField
