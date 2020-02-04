@@ -4,7 +4,7 @@
 
 Just simply open the index.html
 
-## Show it
+## Show it & Ride it
 
 1. Install the dependencys
 ```
