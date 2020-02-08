@@ -8,17 +8,21 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ride_it</groupId>
-	<artifactId>ride_it</artifactId>
+	<groupId>fdavid</groupId>
+	<artifactId>ride_it_spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ride_it</name>
-	<description>Ride_It projects backend</description>
+	<name>ride_it_spring</name>
+	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

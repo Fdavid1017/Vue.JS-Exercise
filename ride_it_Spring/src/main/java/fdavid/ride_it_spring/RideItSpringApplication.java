@@ -1,13 +1,13 @@
-package com.ride_it.ride_it;
+package fdavid.ride_it_spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RideItApplication {
+public class RideItSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RideItApplication.class, args);
+		SpringApplication.run(RideItSpringApplication.class, args);
 	}
 
 }
