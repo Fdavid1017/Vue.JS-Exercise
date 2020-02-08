@@ -11,24 +11,19 @@ import org.springframework.stereotype.Component;
 public class DatabaseSeeder implements CommandLineRunner {
     UserRepository userRepository;
     RideRepository rideRepository;
-    UserRideRepository userRideRepository;
 
     @Autowired
-    public DatabaseSeeder(UserRepository userRepository, RideRepository rideRepository,
-            UserRideRepository userRideRepository) {
+    public DatabaseSeeder(UserRepository userRepository, RideRepository rideRepository) {
         this.userRepository = userRepository;
         this.rideRepository = rideRepository;
-        this.userRideRepository = userRideRepository;
     }
 
     @Override
     public void run(String... strings) throws Exception {
         List<User> users = new ArrayList<>();
-        List<Ride> ride = new ArrayList<>();
-        List<UserRideConnection> userRide = new ArrayList<>();
+        List<Ride> rides = new ArrayList<>();
 
         userRepository.saveAll(users);
-        rideRepository.saveAll(ride);
-        userRideRepository.saveAll(userRide);
+        rideRepository.saveAll(rides);
     }
 }
