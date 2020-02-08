@@ -1,0 +1,1 @@
+CREATE DATABASE ride_it CHARACTER SET utf8 COLLATE utf8_hungarian_ci;

@@ -1,6 +1,7 @@
 package fdavid.ride_it_spring;
 
 import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +12,9 @@ public class Ride {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String from;
-    private String to;
-    private LocalDateTime when;
+    private String fromLocation;
+    private String toLocation;
+    private LocalDateTime whenTime;
     private int spaces;
     private String car;
     private String description;
@@ -22,36 +23,36 @@ public class Ride {
     }
 
     public Ride(String from, String to, LocalDateTime when, int spaces, String car, String description) {
-        this.from = from;
-        this.to = to;
-        this.when = when;
+        this.fromLocation = from;
+        this.toLocation = to;
+        this.whenTime = when;
         this.spaces = spaces;
         this.car = car;
         this.description = description;
     }
 
     public String getFrom() {
-        return this.from;
+        return this.fromLocation;
     }
 
     public void setFrom(String from) {
-        this.from = from;
+        this.fromLocation = from;
     }
 
     public String getTo() {
-        return this.to;
+        return this.toLocation;
     }
 
     public void setTo(String to) {
-        this.to = to;
+        this.toLocation = to;
     }
 
     public LocalDateTime getWhen() {
-        return this.when;
+        return this.whenTime;
     }
 
     public void setWhen(LocalDateTime when) {
-        this.when = when;
+        this.whenTime = when;
     }
 
     public int getSpaces() {
