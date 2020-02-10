@@ -43,4 +43,9 @@ public class UserRideController {
     public void create(@RequestBody UserRide userRide) {
         userRideRepository.save(userRide);
     }
+
+    @RequestMapping(value = "/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        userRideRepository.deleteById(id);
+    }
 }

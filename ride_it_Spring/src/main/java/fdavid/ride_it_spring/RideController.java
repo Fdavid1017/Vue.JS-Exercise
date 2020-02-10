@@ -50,4 +50,9 @@ public class RideController {
     public void create(@RequestBody Ride ride) {
         rideRepository.save(ride);
     }
+
+    @RequestMapping(value = "/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        rideRepository.deleteById(id);
+    }
 }
