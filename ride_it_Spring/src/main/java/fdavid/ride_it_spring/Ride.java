@@ -22,37 +22,38 @@ public class Ride {
     public Ride() {
     }
 
-    public Ride(String from, String to, LocalDateTime when, int spaces, String car, String description) {
-        this.fromLocation = from;
-        this.toLocation = to;
-        this.whenTime = when;
+    public Ride(String fromLocation, String toLocation, LocalDateTime whenTime, int spaces, String car,
+            String description) {
+        this.fromLocation = fromLocation;
+        this.toLocation = toLocation;
+        this.whenTime = whenTime;
         this.spaces = spaces;
         this.car = car;
         this.description = description;
     }
 
-    public String getFrom() {
+    public String getFromLocation() {
         return this.fromLocation;
     }
 
-    public void setFrom(String from) {
-        this.fromLocation = from;
+    public void setFromLocation(String fromLocation) {
+        this.fromLocation = fromLocation;
     }
 
-    public String getTo() {
+    public String getToLocation() {
         return this.toLocation;
     }
 
-    public void setTo(String to) {
-        this.toLocation = to;
+    public void setToLocation(String toLocation) {
+        this.toLocation = toLocation;
     }
 
-    public LocalDateTime getWhen() {
+    public LocalDateTime getWhenTime() {
         return this.whenTime;
     }
 
-    public void setWhen(LocalDateTime when) {
-        this.whenTime = when;
+    public void setWhenTime(LocalDateTime whenTime) {
+        this.whenTime = whenTime;
     }
 
     public int getSpaces() {

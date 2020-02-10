@@ -1,7 +1,5 @@
 package fdavid.ride_it_spring;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

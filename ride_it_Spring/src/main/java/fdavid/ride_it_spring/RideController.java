@@ -2,7 +2,9 @@ package fdavid.ride_it_spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,7 +23,17 @@ public class RideController {
     }
 
     @RequestMapping(value = "/id/{id}")
-    public Ride getByEmail(@PathVariable Long id) {
+    public Ride getById(@PathVariable Long id) {
         return rideRepository.findByIdIs(id);
+    }
+
+    @RequestMapping(value = "/findBetweenLocations/{fromLocation}/{toLocation}")
+    public Iterable<Ride> getBetweenLocations(@PathVariable String fromLocation, @PathVariable String toLocation) {
+        return rideRepository.findByFromLocationAndToLocation(fromLocation, toLocation);
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public void create(@RequestBody Ride ride) {
+        rideRepository.save(ride);
     }
 }
