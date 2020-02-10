@@ -1,4 +1,5 @@
 /* eslint-disable space-before-function-paren */
+import { AddUser } from './ApiController.js'
 
 export function register(store, account) {
   let errors = []
@@ -35,11 +36,10 @@ export function register(store, account) {
     firstName: account.firstName,
     secondName: account.secondName,
     password: account.password,
-    email: account.email,
-    profilePicture: account.profilePicture,
-    id: -2
+    email: account.email
   }
-
-  store.commit('register', user)
+  console.log(user)
+  AddUser(user)
+  // store.commit('register', user)
   return []
 }
