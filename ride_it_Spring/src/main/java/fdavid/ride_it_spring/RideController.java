@@ -32,6 +32,20 @@ public class RideController {
         return rideRepository.findByFromLocationAndToLocation(fromLocation, toLocation);
     }
 
+    @RequestMapping(value = "/findBetweenLocationsAvailable/{fromLocation}/{toLocation}")
+    public Iterable<Ride> getBetweenLocationsAvailable(@PathVariable String fromLocation,
+            @PathVariable String toLocation) {
+        return rideRepository.findByFromLocationAndToLocation(fromLocation, toLocation);
+    }
+
+    @RequestMapping(value = "/updateSpace/{id}/{space}")
+    public void updateSpace(@PathVariable Long id, @PathVariable int space) {
+        Ride ride = getById(id);
+        ride.setSpaces(space);
+
+        rideRepository.save(ride);
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public void create(@RequestBody Ride ride) {
         rideRepository.save(ride);
