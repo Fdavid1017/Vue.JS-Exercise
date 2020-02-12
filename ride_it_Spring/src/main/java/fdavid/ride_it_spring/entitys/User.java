@@ -1,4 +1,4 @@
-package fdavid.ride_it_spring;
+package fdavid.ride_it_spring.entitys;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

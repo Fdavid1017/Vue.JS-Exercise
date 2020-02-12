@@ -1,4 +1,4 @@
-package fdavid.ride_it_spring;
+package fdavid.ride_it_spring.controllers;
 
 import java.util.Optional;
 
@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import fdavid.ride_it_spring.entitys.UserRide;
+import fdavid.ride_it_spring.repositorys.UserRideRepository;
 
 @RestController
 @RequestMapping(value = "/userRide")

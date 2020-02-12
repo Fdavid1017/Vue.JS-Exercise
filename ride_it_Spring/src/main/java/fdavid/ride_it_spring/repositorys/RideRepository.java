@@ -1,4 +1,4 @@
-package fdavid.ride_it_spring;
+package fdavid.ride_it_spring.repositorys;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import fdavid.ride_it_spring.entitys.Ride;
 
 @Qualifier("ride")
 @Repository

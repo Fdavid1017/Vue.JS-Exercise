@@ -1,4 +1,4 @@
-package fdavid.ride_it_spring;
+package fdavid.ride_it_spring.entitys;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,17 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class UserRide {
+public class RidePassenger {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private Long rideId;
     private String email;
 
-    public UserRide() {
+    public RidePassenger() {
     }
 
-    public UserRide(Long rideId, String email) {
+    public RidePassenger(Long rideId, String email) {
         this.rideId = rideId;
         this.email = email;
     }
