@@ -1,6 +1,5 @@
 /* eslint-disable space-before-function-paren */
 import { GetUserByEmail } from './ApiController.js'
-// import { RouteToHome } from './RouteToHome'
 
 export function login(store, account, errors, router) {
   if (account.password === '') {

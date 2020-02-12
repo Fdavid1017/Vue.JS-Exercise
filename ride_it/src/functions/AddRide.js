@@ -1,4 +1,5 @@
 /* eslint-disable space-before-function-paren */
+import { AddRide } from './ApiController.js'
 
 export function addRide(store, ride) {
   let errors = []
@@ -31,6 +32,18 @@ export function addRide(store, ride) {
     return errors
   }
 
-  store.commit('addRide', ride)
+  let temp = {
+    fromLocation: ride.from,
+    toLocation: ride.to,
+    whenTime: ride.when,
+    spaces: ride.spaces,
+    car: ride.car,
+    description: ride.description
+  }
+
+  //   store.commit('addRide', ride)
+  let result = AddRide(temp)
+  console.log(result)
+
   return []
 }

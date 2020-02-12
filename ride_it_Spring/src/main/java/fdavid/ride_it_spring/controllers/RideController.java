@@ -1,5 +1,7 @@
 package fdavid.ride_it_spring.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +27,14 @@ public class RideController {
         return rideRepository.findAll();
     }
 
+    @RequestMapping(value = "/allid")
+    public Iterable<Ride> getAllWithId() {
+        return rideRepository.findAllWithIds();
+    }
+
     @RequestMapping(value = "/id/{id}")
-    public Ride getById(@PathVariable Long id) {
-        return rideRepository.findByIdIs(id);
+    public Optional<Ride> getById(@PathVariable Long id) {
+        return rideRepository.findById(id);
     }
 
     @RequestMapping(value = "/findBetweenLocations/{fromLocation}/{toLocation}")
@@ -42,16 +49,20 @@ public class RideController {
     }
 
     @RequestMapping(value = "/updateSpace/{id}/{space}")
-    public void updateSpace(@PathVariable Long id, @PathVariable int space) {
-        Ride ride = getById(id);
-        ride.setSpaces(space);
+    public Ride updateSpace(@PathVariable Long id, @PathVariable int space) {
+        Optional<Ride> ride = getById(id);
+        if (ride.isPresent()) {
+            Ride value = ride.get();
+            value.setSpaces(space);
+            return rideRepository.save(value);
+        }
 
-        rideRepository.save(ride);
+        return null;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public void create(@RequestBody Ride ride) {
-        rideRepository.save(ride);
+    public Ride create(@RequestBody Ride ride) {
+        return rideRepository.save(ride);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
