@@ -96,7 +96,7 @@ export default {
       this.errors = register(this.account)
 
       if (this.errors.length === 0) {
-      //  this.$router.push('Login')
+        this.$router.push('Login')
       }
     }
   }

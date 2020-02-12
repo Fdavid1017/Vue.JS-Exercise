@@ -1,8 +1,8 @@
 /* eslint-disable space-before-function-paren */
+import { GetUserByEmail } from './ApiController.js'
+// import { RouteToHome } from './RouteToHome'
 
-export function login(store, account) {
-  let errors = []
-
+export function login(store, account, errors, router) {
   if (account.password === '') {
     errors.push('passwordError')
   }
@@ -12,21 +12,28 @@ export function login(store, account) {
   }
 
   if (errors.length > 0) {
-    return errors
+    return
   }
 
-  let user = store.getters.accounts.filter(acc => {
-    return acc.email === account.email && acc.password === account.password
+  GetUserByEmail(account.email).then(user => {
+    console.log('User data:')
+    console.log(user.data)
+    if (
+      typeof user.data === 'string' ||
+      user.data instanceof String ||
+      user.data.password !== account.password
+    ) {
+      console.log('No account found error')
+      errors.push('noAccountError')
+    }
+
+    console.log(errors.length)
+    if (errors.length > 0) {
+      return
+    }
+
+    console.log('Errors array is empty so commiting userData')
+    store.commit('setCurrentUser', user.data)
+    router.push('/')
   })
-
-  if (user.length !== 1) {
-    errors.push('noAccountError')
-  }
-
-  if (errors.length > 0) {
-    return errors
-  }
-
-  store.commit('setCurrentUser', user[0])
-  return []
 }
