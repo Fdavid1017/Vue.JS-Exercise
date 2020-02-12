@@ -93,10 +93,10 @@ export default {
   components: { ProfilePictureUpload, MyInput },
   methods: {
     register: function() {
-      this.errors = register(this.$store, this.account)
+      this.errors = register(this.account)
 
       if (this.errors.length === 0) {
-        this.$router.push('Login')
+      //  this.$router.push('Login')
       }
     }
   }

@@ -1,7 +1,7 @@
 /* eslint-disable space-before-function-paren */
 import { AddUser } from './ApiController.js'
 
-export function register(store, account) {
+export function register(account) {
   let errors = []
 
   if (account.firstName === '') {
@@ -38,8 +38,8 @@ export function register(store, account) {
     password: account.password,
     email: account.email
   }
-  console.log(user)
-  AddUser(user)
-  // store.commit('register', user)
+
+  let result = AddUser(user)
+  console.log(result)
   return []
 }
