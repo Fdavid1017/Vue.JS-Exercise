@@ -1,5 +1,6 @@
 package fdavid.ride_it_spring.controllers;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class RideController {
     }
 
     @RequestMapping(value = "/all")
-    public Iterable<Ride> getAll() {        
+    public Iterable<Ride> getAll() {
         return rideRepository.findAll();
     }
 
@@ -46,6 +47,14 @@ public class RideController {
     public Iterable<Ride> getBetweenLocationsAvailable(@PathVariable String fromLocation,
             @PathVariable String toLocation) {
         return rideRepository.findByFromLocationAndToLocation(fromLocation, toLocation);
+    }
+
+    @RequestMapping(value = "/findRidesByLocationAndTime/{fromLocation}/{toLocation}/{fromTimeS}/{toTimeS}")
+    public Iterable<Ride> getRidesByLocationAndTime(@PathVariable String fromLocation, @PathVariable String toLocation,
+            @PathVariable String fromTimeS, @PathVariable String toTimeS) {
+        LocalDateTime fromTime = LocalDateTime.parse(fromTimeS);
+        LocalDateTime toTime = LocalDateTime.parse(toTimeS);
+        return rideRepository.findRidesByLocationAndTime(fromLocation, toLocation, fromTime, toTime);
     }
 
     @RequestMapping(value = "/updateSpace/{id}/{space}")
