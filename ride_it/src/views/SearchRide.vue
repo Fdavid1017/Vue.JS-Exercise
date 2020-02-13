@@ -82,7 +82,7 @@
       <RideInfos
         class="mt-3"
         v-for="ride in result"
-        v-bind:key="ride.rideId"
+        v-bind:key="ride.id"
         v-bind:ride="ride"
       />
     </div>

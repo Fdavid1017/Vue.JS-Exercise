@@ -43,8 +43,8 @@ public class RidePassengerController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public void create(@RequestBody RidePassenger ridePassenger) {
-        ridePassengerRepository.save(ridePassenger);
+    public RidePassenger create(@RequestBody RidePassenger ridePassenger) {
+       return ridePassengerRepository.save(ridePassenger);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)

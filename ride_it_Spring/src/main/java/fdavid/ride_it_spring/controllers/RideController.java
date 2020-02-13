@@ -28,11 +28,6 @@ public class RideController {
         return rideRepository.findAll();
     }
 
-    @RequestMapping(value = "/allid")
-    public Iterable<Ride> getAllWithId() {
-        return rideRepository.findAllWithIds();
-    }
-
     @RequestMapping(value = "/id/{id}")
     public Optional<Ride> getById(@PathVariable Long id) {
         return rideRepository.findById(id);
@@ -40,12 +35,6 @@ public class RideController {
 
     @RequestMapping(value = "/findBetweenLocations/{fromLocation}/{toLocation}")
     public Iterable<Ride> getBetweenLocations(@PathVariable String fromLocation, @PathVariable String toLocation) {
-        return rideRepository.findByFromLocationAndToLocation(fromLocation, toLocation);
-    }
-
-    @RequestMapping(value = "/findBetweenLocationsAvailable/{fromLocation}/{toLocation}")
-    public Iterable<Ride> getBetweenLocationsAvailable(@PathVariable String fromLocation,
-            @PathVariable String toLocation) {
         return rideRepository.findByFromLocationAndToLocation(fromLocation, toLocation);
     }
 

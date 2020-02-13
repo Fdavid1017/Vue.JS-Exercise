@@ -40,7 +40,28 @@ export async function SearchRide(searchParams) {
       '/' +
       searchParams.betweenTill
   )
-  console.log(t.data)
 
   return t.data
+}
+
+export async function UpdateSpace(ride) {
+  let result = await axios.get(
+    BASE_URL + 'ride/updateSpace/' + ride.id + '/' + (ride.spaces - 1)
+  )
+  console.log('Updated ride infos:')
+  console.log(result.data)
+  return result.data
+}
+
+export async function AddRidePassenger(currentRideId, currentEmail) {
+  let ridePassenger = {
+    rideId: currentRideId,
+    email: currentEmail
+  }
+  let result = await axios.post(
+    BASE_URL + 'ridePassenger/create',
+    ridePassenger
+  )
+
+  return result
 }
