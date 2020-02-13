@@ -1,11 +1,7 @@
 /* eslint-disable space-before-function-paren */
+import { GetUserByEmail } from './ApiController.js'
 
-export function getCurrentUser(store) {
-  let currentUserId = store.getters.loggedInUser
-  let users = store.getters.accounts
-
-  console.log(currentUserId)
-  console.log(users)
-  console.log(users[currentUserId])
-  return users[currentUserId]
+export async function getCurrentUser(email) {
+  let user = await GetUserByEmail(email)
+  return user.data
 }

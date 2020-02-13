@@ -27,8 +27,16 @@ import { getCurrentUser } from '@/functions/GetCurrentUser.js'
 export default {
   data: function() {
     return {
-      user: getCurrentUser(this.$store)
+      user: {
+        firstName: '',
+        secondName: '',
+        email: ''
+      }
     }
+  },
+
+  created: async function() {
+    this.user = await getCurrentUser(this.$store.getters.loggedInUser)
   }
 }
 </script>
