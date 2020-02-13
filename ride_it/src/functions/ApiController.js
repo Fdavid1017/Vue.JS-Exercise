@@ -26,3 +26,21 @@ export async function AddUserRide(userRide) {
   console.log(t.data)
   return t
 }
+
+export async function SearchRide(searchParams) {
+  console.log(searchParams)
+  let t = await axios.get(
+    BASE_URL +
+      'ride/findRidesByLocationAndTime/' +
+      searchParams.from +
+      '/' +
+      searchParams.to +
+      '/' +
+      searchParams.betweenFrom +
+      '/' +
+      searchParams.betweenTill
+  )
+  console.log(t.data)
+
+  return t.data
+}

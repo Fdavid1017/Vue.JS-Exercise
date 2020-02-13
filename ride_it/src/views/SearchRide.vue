@@ -137,9 +137,8 @@ export default {
     }
   },
   methods: {
-    search: function() {
-      this.result = searchRide(this.$store, this.searchParams)
-      console.log(this.result)
+    search: async function() {
+      this.result = await searchRide(this.searchParams)
     }
   }
 }

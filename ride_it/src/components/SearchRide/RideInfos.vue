@@ -14,16 +14,16 @@
       <div class="row mt-2">
         <div class="col">
           <img class="icon mr-1" src="@/assets/mapPlace.svg" alt="Icon" />
-          From: {{ ride.from }}
+          From: {{ ride.fromLocation }}
         </div>
         <div class="col mr-1">
           <img class="icon" src="@/assets/destination.svg" alt="Icon" />
-          To: {{ ride.to }}
+          To: {{ ride.toLocation }}
         </div>
       </div>
       <div class="row mt-2 mr-1">
         <img class="icon mr-1" src="@/assets/calendar.svg" alt="Icon" />
-        When: {{ ride.when.replace('T', ' ') }}
+        When: {{ ride.whenTime.replace('T', ' ') }}
       </div>
       <div class="row mt-2 mr-1">
         <img class="icon" src="@/assets/team.svg" alt="Icon" />
