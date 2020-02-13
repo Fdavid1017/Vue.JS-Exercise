@@ -23,7 +23,7 @@ public class RideController {
     }
 
     @RequestMapping(value = "/all")
-    public Iterable<Ride> getAll() {
+    public Iterable<Ride> getAll() {        
         return rideRepository.findAll();
     }
 

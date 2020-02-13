@@ -22,7 +22,7 @@ export default new Vuex.Store({
       state.accounts.push(user)
     },
     setCurrentUser(state, user) {
-      state.loggedInUser = user.id
+      state.loggedInUser = user.email
     },
     addRide(state, infos) {
       state.ridesId++

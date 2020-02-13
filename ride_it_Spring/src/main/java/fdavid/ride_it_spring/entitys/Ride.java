@@ -32,6 +32,14 @@ public class Ride {
         this.description = description;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFromLocation() {
         return this.fromLocation;
     }

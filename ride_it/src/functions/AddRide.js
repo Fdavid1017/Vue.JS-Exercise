@@ -1,7 +1,7 @@
 /* eslint-disable space-before-function-paren */
-import { AddRide } from './ApiController.js'
+import { AddRide, AddUserRide } from './ApiController.js'
 
-export function addRide(store, ride) {
+export async function addRide(store, ride) {
   let errors = []
   if (store.getters.loggedInUser === -1) {
     errors.push('notLoggedInError')
@@ -42,8 +42,13 @@ export function addRide(store, ride) {
   }
 
   //   store.commit('addRide', ride)
-  let result = AddRide(temp)
-  console.log(result)
+  let rideTemp = await AddRide(temp)
+  let userRide = {
+    rideId: rideTemp.data.id,
+    email: store.getters.loggedInUser
+  }
+
+  await AddUserRide(userRide)
 
   return []
 }

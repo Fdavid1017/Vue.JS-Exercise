@@ -15,6 +15,14 @@ export async function GetUserByEmail(email) {
 
 export async function AddRide(ride) {
   let t = await axios.post(BASE_URL + 'ride/create', ride)
+  console.log('Ride data:')
+  console.log(t.data)
+  return t
+}
+
+export async function AddUserRide(userRide) {
+  let t = await axios.post(BASE_URL + 'userRide/create', userRide)
+  console.log('User ride data:')
   console.log(t.data)
   return t
 }

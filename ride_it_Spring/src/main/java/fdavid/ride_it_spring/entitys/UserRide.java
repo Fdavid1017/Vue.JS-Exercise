@@ -16,6 +16,14 @@ public class UserRide {
     public UserRide() {
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public UserRide(Long rideId, String email) {
         this.rideId = rideId;
         this.email = email;

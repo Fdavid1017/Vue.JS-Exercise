@@ -124,8 +124,8 @@ export default {
     }
   },
   methods: {
-    add: function() {
-      this.errors = addRide(this.$store, this.ride)
+    add: async function() {
+      this.errors = await addRide(this.$store, this.ride)
       if (this.errors.length === 0) {
         this.$router.push('/')
       }
