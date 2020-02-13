@@ -40,9 +40,14 @@ export default {
   components: { RidesData },
   data: function() {
     return {
-      rides: getUserRides(this.$store, false),
-      passenger: getUserRides(this.$store, true)
+      rides: [],
+      passenger: []
     }
+  },
+
+  created: async function() {
+    this.rides = await getUserRides(this.$store.getters.loggedInUser, false)
+    this.passenger = await getUserRides(this.$store.getters.loggedInUser, true)
   }
 }
 </script>

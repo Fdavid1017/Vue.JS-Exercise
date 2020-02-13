@@ -1,7 +1,12 @@
 /* eslint-disable space-before-function-paren */
+import {
+  GetUserRidesByEmail,
+  GetUserPassengersByEmail,
+  GetRideById
+} from './ApiController.js'
 
-export function getUserRides(store, passenger) {
-  let driverId = store.getters.loggedInUser
+export async function getUserRides(email, passenger) {
+  /* let driverId = store.getters.loggedInUser
   let rides = []
   console.log(store.getters.rides)
   if (passenger) {
@@ -17,7 +22,20 @@ export function getUserRides(store, passenger) {
     rides = store.getters.rides.filter(ride => {
       return ride.driverId === driverId
     })
+  } */
+
+  let result = []
+  let connection
+  if (passenger) {
+    connection = await GetUserPassengersByEmail(email)
+  } else {
+    connection = await GetUserRidesByEmail(email)
   }
 
-  return rides
+  for (let i = 0; i < connection.length; i++) {
+    let ride = await GetRideById(connection[i].rideId)
+    result.push(ride)
+  }
+
+  return result
 }

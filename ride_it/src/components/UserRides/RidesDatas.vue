@@ -4,12 +4,12 @@
       <DataField
         class="col"
         name="From"
-        v-bind:data="ride.from"
+        v-bind:data="ride.fromLocation"
         v-bind:src="require('../../assets/mapPlace.svg')"
       /><DataField
         class="col"
         name="To"
-        v-bind:data="ride.to"
+        v-bind:data="ride.toLocation"
         v-bind:src="require('../../assets/destination.svg')"
       />
     </div>
@@ -17,7 +17,7 @@
       <DataField
         class="col"
         name="When"
-        v-bind:data="ride.when"
+        v-bind:data="ride.whenTime"
         v-bind:src="require('../../assets/calendar.svg')"
       /><DataField
         class="col"

@@ -65,3 +65,18 @@ export async function AddRidePassenger(currentRideId, currentEmail) {
 
   return result
 }
+
+export async function GetUserRidesByEmail(email) {
+  let result = await axios.get(BASE_URL + 'userRide/byEmail/' + email)
+  return result.data
+}
+
+export async function GetUserPassengersByEmail(email) {
+  let result = await axios.get(BASE_URL + 'ridePassenger/byEmail/' + email)
+  return result.data
+}
+
+export async function GetRideById(id) {
+  let result = await axios.get(BASE_URL + 'ride/id/' + id)
+  return result.data
+}
