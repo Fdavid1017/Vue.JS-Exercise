@@ -33,7 +33,7 @@ public class RidePassengerController {
     }
 
     @RequestMapping(value = "/byRideId/{id}")
-    public RidePassenger getRideId(@PathVariable Long id) {
+    public Iterable<RidePassenger> getRideId(@PathVariable Long id) {
         return ridePassengerRepository.findByRideId(id);
     }
 
@@ -42,9 +42,14 @@ public class RidePassengerController {
         return ridePassengerRepository.findById(id);
     }
 
+    @RequestMapping("rideIdAndEmail/{rideId}/{email}")
+    public RidePassenger getByIdAndEmail(@PathVariable Long rideId, @PathVariable String email) {
+        return ridePassengerRepository.findByRideIdAndEmail(rideId, email);
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public RidePassenger create(@RequestBody RidePassenger ridePassenger) {
-       return ridePassengerRepository.save(ridePassenger);
+        return ridePassengerRepository.save(ridePassenger);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)

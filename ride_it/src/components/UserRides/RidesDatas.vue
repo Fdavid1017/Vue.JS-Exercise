@@ -79,10 +79,13 @@ export default {
   components: { DataField },
   methods: {
     removeRide: function() {
+      console.log('rideId in RidesDatas: ' + this.ride.id)
+      console.log('Full ride:')
+      console.log(this.ride)
       if (this.passenger) {
-        removePassanger(this.$store, this.ride.rideId)
+        removePassanger(this.ride.id, this.$store.getters.loggedInUser)
       } else {
-        removeRide(this.$store, this.ride.rideId)
+        removeRide(this.ride.id, this.$store.getters.loggedInUser)
       }
       this.$router.push('/')
     }

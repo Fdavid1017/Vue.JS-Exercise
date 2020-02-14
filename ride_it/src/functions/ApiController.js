@@ -44,9 +44,18 @@ export async function SearchRide(searchParams) {
   return t.data
 }
 
-export async function UpdateSpace(ride) {
+export async function RemoveSpace(ride) {
   let result = await axios.get(
     BASE_URL + 'ride/updateSpace/' + ride.id + '/' + (ride.spaces - 1)
+  )
+  console.log('Updated ride infos:')
+  console.log(result.data)
+  return result.data
+}
+
+export async function AddSpace(ride) {
+  let result = await axios.get(
+    BASE_URL + 'ride/updateSpace/' + ride.id + '/' + (ride.spaces + 1)
   )
   console.log('Updated ride infos:')
   console.log(result.data)
@@ -79,4 +88,40 @@ export async function GetUserPassengersByEmail(email) {
 export async function GetRideById(id) {
   let result = await axios.get(BASE_URL + 'ride/id/' + id)
   return result.data
+}
+
+export async function GetUserRidesByRideIdAndEmail(rideId, email) {
+  let result = await axios.get(
+    BASE_URL + 'userRide/rideIdAndEmail/' + rideId + '/' + email
+  )
+  return result.data
+}
+
+export async function GetPassengerRidesByRideIdAndEmail(rideId, email) {
+  let url = BASE_URL + 'ridePassenger/rideIdAndEmail/' + rideId + '/' + email
+  let result = await axios.get(url)
+  return result.data
+}
+
+export async function GetPassengerRidesByRideId(rideId) {
+  let url = BASE_URL + 'ridePassenger/byRideId/' + rideId
+  let result = await axios.get(url)
+  return result.data
+}
+
+export async function GetPassengerRidesById(id) {
+  let result = await axios.get(BASE_URL + 'ridePassenger/id/' + id)
+  return result.data
+}
+
+export async function DeletePassenger(id) {
+  let result = await GetPassengerRidesById(id)
+  result = await GetRideById(result.rideId)
+  await AddSpace(result)
+
+  await axios.delete(BASE_URL + 'ridePassenger/delete/' + id)
+}
+
+export async function DeleteRide(id) {
+  await axios.delete(BASE_URL + 'userRide/delete/' + id)
 }

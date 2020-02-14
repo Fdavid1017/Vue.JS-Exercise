@@ -42,6 +42,11 @@ public class UserRideController {
         return userRideRepository.findById(id);
     }
 
+    @RequestMapping("rideIdAndEmail/{rideId}/{email}")
+    public UserRide getByIdAndEmail(@PathVariable Long rideId, @PathVariable String email) {
+        return userRideRepository.findByRideIdAndEmail(rideId, email);
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public UserRide create(@RequestBody UserRide userRide) {
         return userRideRepository.save(userRide);

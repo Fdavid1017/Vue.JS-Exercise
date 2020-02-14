@@ -13,5 +13,7 @@ import fdavid.ride_it_spring.entitys.RidePassenger;
 public interface RidePassengerRepository extends CrudRepository<RidePassenger, Long> {
     List<RidePassenger> findByEmail(String email);
 
-    RidePassenger findByRideId(Long rideId);
+    List<RidePassenger> findByRideId(Long rideId);
+    
+    RidePassenger findByRideIdAndEmail(Long rideId, String email);
 }
