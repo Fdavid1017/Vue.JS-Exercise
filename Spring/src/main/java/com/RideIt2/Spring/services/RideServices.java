@@ -89,4 +89,8 @@ public class RideServices {
 
         return ride;
     }
+
+    public void removeRide(Long id) {
+        rideRepository.deleteById(id);
+    }
 }

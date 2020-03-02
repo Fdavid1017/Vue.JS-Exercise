@@ -1,8 +1,7 @@
 /* eslint-disable space-before-function-paren */
 import {
   GetUserRidesByEmail,
-  GetUserPassengersByEmail,
-  GetRideById
+  GetUserPassengersByEmail
 } from './ApiController.js'
 
 export async function getUserRides(email, passenger) {
@@ -25,17 +24,18 @@ export async function getUserRides(email, passenger) {
   } */
 
   let result = []
-  let connection
+  console.log('email: ' + email)
   if (passenger) {
-    connection = await GetUserPassengersByEmail(email)
+    result = await GetUserPassengersByEmail(email)
   } else {
-    connection = await GetUserRidesByEmail(email)
+    result = await GetUserRidesByEmail(email)
   }
-
-  for (let i = 0; i < connection.length; i++) {
+  console.log('Result:')
+  console.log(result)
+  /* for (let i = 0; i < connection.length; i++) {
     let ride = await GetRideById(connection[i].rideId)
     result.push(ride)
-  }
+  } */
 
   return result
 }

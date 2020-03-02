@@ -1,5 +1,5 @@
 /* eslint-disable space-before-function-paren */
-import { AddRide, AddUserRide } from './ApiController.js'
+import { AddRide } from './ApiController.js'
 
 export async function addRide(store, ride) {
   let errors = []
@@ -33,6 +33,9 @@ export async function addRide(store, ride) {
   }
 
   let temp = {
+    driver: {
+      email: store.getters.loggedInUser
+    },
     fromLocation: ride.from,
     toLocation: ride.to,
     whenTime: ride.when,
@@ -41,14 +44,9 @@ export async function addRide(store, ride) {
     description: ride.description
   }
 
-  //   store.commit('addRide', ride)
+  // store.commit('addRide', ride)
   let rideTemp = await AddRide(temp)
-  let userRide = {
-    rideId: rideTemp.data.id,
-    email: store.getters.loggedInUser
-  }
-
-  await AddUserRide(userRide)
+  console.log(rideTemp.data)
 
   return []
 }

@@ -13,7 +13,13 @@ export async function searchRide(search) {
       !ride.passengerIds.includes(store.getters.loggedInUser)
     )
   }) */
-  let rides = await SearchRide(search)
+  let params = {
+    from: search.from,
+    to: search.to,
+    betweenFrom: search.betweenFrom,
+    betweenTill: search.betweenTill
+  }
+  let rides = await SearchRide(params)
 
   return rides
 }

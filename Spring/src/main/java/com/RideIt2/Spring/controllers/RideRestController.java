@@ -8,6 +8,7 @@ import com.RideIt2.Spring.entities.User;
 import com.RideIt2.Spring.services.RideServices;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,5 +72,12 @@ public class RideRestController {
     @PutMapping("ride/removePassenger/{id}/{email}")
     public Ride removePassenger(@PathVariable Long id, @PathVariable String email) {
         return rideServices.removePassenger(id, email);
+    }
+
+    // DELETE
+
+    @DeleteMapping("ride/{id}")
+    public void removeRide(@PathVariable Long id) {
+        rideServices.removeRide(id);
     }
 }
