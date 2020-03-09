@@ -1,7 +1,7 @@
 /* eslint-disable space-before-function-paren */
 import axios from 'axios'
 
-const BASE_URL = 'https://ride-it-app.herokuapp.com/api/'
+const BASE_URL = 'http://localhost:8081/api/'
 
 export async function AddUser(user) {
   let t = await axios.post(BASE_URL + 'user', user)
